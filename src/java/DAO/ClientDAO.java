@@ -23,14 +23,15 @@ public class ClientDAO implements DAO {
 
     @Override
     public void create(Object objet) {
-        this.emf = Persistence.createEntityManagerFactory("INF2_JPAPU");
+        /*this.emf = Persistence.createEntityManagerFactory("INF2_JPAPU");
         this.em = emf.createEntityManager();
         EntityTransaction transac = em.getTransaction();
         transac.begin();
         em.persist(objet);
+        em.close();
         transac.commit();
         em.close();
-        emf.close();        
+        emf.close();*/
     }
 
     @Override
