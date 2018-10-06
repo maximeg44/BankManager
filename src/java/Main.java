@@ -3,10 +3,7 @@
 import DAO.ClientDAO;
 import DAO.DAO;
 import java.util.Date;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
+
 import models.Client;
 
 /*
