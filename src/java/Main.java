@@ -1,4 +1,8 @@
 
+
+import DAO.ClientDAO;
+import DAO.DAO;
+import java.util.Date;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -17,7 +21,7 @@ import models.Client;
  */
 public class Main {
     public static void main(String args[]){
-    EntityManager em;
+    /*EntityManager em;
     EntityManagerFactory emf;
     EntityTransaction transac;
     emf = Persistence.createEntityManagerFactory("INF2_JPAPU");
@@ -25,12 +29,27 @@ public class Main {
     transac = em.getTransaction();
     transac.begin();
     Client client = new Client();
-    client.setNom("TOTO");
-    client.setPrenom("prenom");
+    client.setNom("Barbier");
+    client.setPrenom("Thomas");
+    Date date = new Date("12/06/1991");
+    client.setNaissance(date);
     em.persist(client);
     transac.commit();
     em.close();
-    emf.close();
+    emf.close();*/
+    DAO dao = new ClientDAO();
+    Client client = new Client();
+    client.setNom("Kervarec");
+    client.setPrenom("Samuel");
+    Date date = new Date("12/06/1991");
+    client.setNaissance(date);
+    dao.create(client);
+    System.out.println("Test");
+    
+    
+    
+    
+    
     }
     
 }

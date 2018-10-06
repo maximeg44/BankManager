@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<persistence version="2.0" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-  <persistence-unit name="INF2_JPAPU" ><!--transaction-type="JTA">
-    <jta-data-source>java:app/gestion_bank</jta-data-source> -->
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+  <persistence-unit name="INF2_JPAPU">
+  
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider> 
     <class>models.Account</class>
     <class>models.BankBranch</class>
     <class>models.Client</class>
-    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider> 
-    <exclude-unlisted-classes>true</exclude-unlisted-classes>
-    
     <properties>
       <property name="javax.persistence.schema-generation.database.action" value="create"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>

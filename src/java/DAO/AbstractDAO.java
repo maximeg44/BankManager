@@ -17,21 +17,19 @@ import javax.persistence.Persistence;
 public abstract class AbstractDAO implements DAO {
     private EntityManager em;
     private EntityManagerFactory emf;
-    EntityTransaction transac;
+    
     
     public AbstractDAO(){
         emf = Persistence.createEntityManagerFactory("INF2_JPAPU");
         em = emf.createEntityManager();
-        transac = em.getTransaction();
     }
     
     @Override
     public void create(Object objet) {
+        EntityTransaction transac = this.em.getTransaction();
+        transac.begin();
         em.persist(objet);
-        transac.commit();
-        em.close();
-        emf.close();
-        
+        transac.commit();        
     }
     
     public void update(Object obj) {
