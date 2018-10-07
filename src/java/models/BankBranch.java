@@ -15,8 +15,8 @@ import javax.persistence.Id;
  */
 @Entity
 public class BankBranch {
-     @Id
-    @Column(length = 5)
+    @Id
+    @Column(length = 5, nullable = false, unique = true)
     private int codeAgence;
 
     private String adresse;

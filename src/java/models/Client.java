@@ -22,21 +22,22 @@ import javax.persistence.Temporal;
 public class Client {
     @Id
     @GeneratedValue
-    @Column(length = 8)
+    @Column(length = 8, nullable = false, unique = true)
     private int id_client;
 
+    @Column(nullable = false)
     private String nom;
 
+    @Column(nullable = false)
     private String prenom;
 
-     @Temporal(javax.persistence.TemporalType.DATE)
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date naissance;
 
     @ManyToMany(mappedBy = "mesClients")
     private List<Account> mescomptes;
 
 
-    
     public  Client(){}
     
     public Client(String nom, String prenom){

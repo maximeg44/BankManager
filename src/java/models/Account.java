@@ -22,7 +22,7 @@ import javax.persistence.ManyToMany;
 public class Account {
     @Id
     @GeneratedValue
-    @Column(length = 11)
+    @Column(length = 11, nullable = false, unique = true)
     private String account_id;
 
     @ManyToMany
