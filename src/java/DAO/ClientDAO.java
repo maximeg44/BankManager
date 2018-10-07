@@ -8,6 +8,7 @@ package DAO;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import models.Client;
 /**
  *
  * @author MGU
@@ -22,22 +23,14 @@ public class ClientDAO extends AbstractDAO {
 
     @Override
     public Object find(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return em.find(Client.class, id);
     }
 
     @Override
-    public void update(Object obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public List<Client> findAll() {
+        List<Client> listClients = em.createQuery("Select * FROM Client").getResultList();
+        return listClients;
 
-    @Override
-    public void delete(Object obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public List findAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

@@ -18,22 +18,6 @@ import models.Client;
  */
 public class Main {
     public static void main(String args[]){
-    /*EntityManager em;
-    EntityManagerFactory emf;
-    EntityTransaction transac;
-    emf = Persistence.createEntityManagerFactory("INF2_JPAPU");
-    em = emf.createEntityManager();
-    transac = em.getTransaction();
-    transac.begin();
-    Client client = new Client();
-    client.setNom("Barbier");
-    client.setPrenom("Thomas");
-    Date date = new Date("12/06/1991");
-    client.setNaissance(date);
-    em.persist(client);
-    transac.commit();
-    em.close();
-    emf.close();*/
     DAO dao = new ClientDAO();
     Client client = new Client();
     client.setNom("Kervarec");
