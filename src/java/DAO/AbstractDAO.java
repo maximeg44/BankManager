@@ -26,18 +26,24 @@ public abstract class AbstractDAO implements DAO {
     
     @Override
     public void create(Object objet) {
-        EntityTransaction transac = this.em.getTransaction();
-        transac.begin();
+        em.getTransaction().begin();
         em.persist(objet);
-        transac.commit();        
+        em.getTransaction().commit();
+        em.close();
     }
     
     public void update(Object obj) {
-        
+        em.getTransaction().begin();
+        em.merge(obj);
+        em.getTransaction().commit();
+        em.close();
     }
     
     public void delete(Object obj) {
-        
+        em.getTransaction().begin();
+        em.remove(obj);
+        em.getTransaction().commit();
+        em.close();
     }
     
     
