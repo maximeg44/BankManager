@@ -6,36 +6,32 @@
 package DAO;
 
 import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import models.BankBranch;
 
 /**
  *
  * @author MGU
  */
-public class BankBranchDAO implements DAO{
+public class BankBranchDAO extends AbstractDAO {
 
-    @Override
-    public void create(Object objet) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    private EntityManager em;
+    private EntityManagerFactory emf;
+    
+    public BankBranchDAO(){
+        super();
+    }   
 
     @Override
     public Object find(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return em.find(BankBranch.class, id);
     }
 
     @Override
-    public void update(Object obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void delete(Object obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public List findAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<BankBranch> findAll() {
+        List<BankBranch> listBankBranchs = em.createQuery("Select * FROM BankBranch").getResultList();
+        return listBankBranchs;
     }
     
 }

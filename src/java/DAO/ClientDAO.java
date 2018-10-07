@@ -30,7 +30,6 @@ public class ClientDAO extends AbstractDAO {
     public List<Client> findAll() {
         List<Client> listClients = em.createQuery("Select * FROM Client").getResultList();
         return listClients;
-
     }
     
 }

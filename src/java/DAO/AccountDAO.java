@@ -6,36 +6,32 @@
 package DAO;
 
 import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import models.Account;
 
 /**
  *
  * @author MGU
  */
-public class AccountDAO implements DAO {
-
-    @Override
-    public void create(Object objet) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+public class AccountDAO extends AbstractDAO {
+    
+    private EntityManager em;
+    private EntityManagerFactory emf;
+    
+    public AccountDAO(){
+        super();
+    }   
 
     @Override
     public Object find(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return em.find(Account.class, id);
     }
 
     @Override
-    public void update(Object obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Account> findAll() {
+        List<Account> listAccounts = em.createQuery("Select * FROM Account").getResultList();
+        return listAccounts;
     }
-
-    @Override
-    public void delete(Object obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public List findAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
+   
 }

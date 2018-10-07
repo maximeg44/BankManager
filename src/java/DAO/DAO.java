@@ -10,6 +10,7 @@ import java.util.List;
 /**
  *
  * @author MGU
+ * @param <T>
  */
 public interface DAO<T> {
     
