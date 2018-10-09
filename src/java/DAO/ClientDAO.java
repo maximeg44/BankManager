@@ -5,6 +5,7 @@
  */
 package DAO;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -14,7 +15,7 @@ import models.Client;
  * @author MGU
  */
 public class ClientDAO extends AbstractDAO {
-    private EntityManager em;
+    //private EntityManager em;
     private EntityManagerFactory emf;
     
     public ClientDAO(){
@@ -28,7 +29,7 @@ public class ClientDAO extends AbstractDAO {
 
     @Override
     public List<Client> findAll() {
-        List<Client> listClients = em.createQuery("Select * FROM Client").getResultList();
+        List<Client> listClients = em.createQuery("select c from Client as c").getResultList();
         return listClients;
     }
     

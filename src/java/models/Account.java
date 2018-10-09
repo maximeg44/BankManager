@@ -28,7 +28,7 @@ public class Account {
     @ManyToMany
     @JoinTable(name = "compte_client",
             joinColumns = @JoinColumn(name = "a_id", referencedColumnName = "account_id"),
-            inverseJoinColumns = @JoinColumn(name = "c_id", referencedColumnName = "client_id"))
+            inverseJoinColumns = @JoinColumn(name = "c_id", referencedColumnName = "id_client"))
     private List<Client> mesClients;
 
 

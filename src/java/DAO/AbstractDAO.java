@@ -15,8 +15,8 @@ import javax.persistence.Persistence;
  * @author MGU
  */
 public abstract class AbstractDAO implements DAO {
-    private EntityManager em;
-    private EntityManagerFactory emf;
+    protected EntityManager em;
+    protected EntityManagerFactory emf;
     
     
     public AbstractDAO(){

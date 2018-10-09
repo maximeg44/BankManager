@@ -2,7 +2,9 @@
 
 import DAO.ClientDAO;
 import DAO.DAO;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import models.Client;
 
@@ -23,7 +25,7 @@ public class Main {
      * Test pour les clients
      */
     DAO dao = new ClientDAO();
-    DAO dao2 = new ClientDAO();
+    /*DAO dao2 = new ClientDAO();
     
     Client client = new Client();
     Client client2 = new Client();
@@ -40,11 +42,22 @@ public class Main {
     client2.setNaissance(date2);
     dao2.create(client2);
     
-    dao.delete(client);
+    System.out.println("TOOOOOOOOOOOOOOOOOo");
+    System.out.println(client.getId_client());
+    dao.delete(client);*/
+    
+    List<Client> list;
+    
+    list = new ArrayList<>();
+    list = dao.findAll();
+    
+    System.out.println(list.get(0).getId_client());
+    
         
-    /**
-     * Test pour les comptes bancaires
-     */
+    
+    // * Test pour les comptes bancaires
+      //  list = new ArrayList()<>;
+
     
     
     
