@@ -6,6 +6,7 @@
 package models;
 
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,6 +14,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+
 
 /**
  *
@@ -25,7 +28,7 @@ public class Account {
     @Column(length = 11, nullable = false, unique = true)
     private String account_id;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "compte_client",
             joinColumns = @JoinColumn(name = "a_id", referencedColumnName = "account_id"),
             inverseJoinColumns = @JoinColumn(name = "c_id", referencedColumnName = "id_client"))
@@ -37,8 +40,12 @@ public class Account {
     @Column(length = 27)
     private String iban;
 
+
     @Column(scale = 2)
     private Double solde;
+    
+    @ManyToOne
+    private BankBranch bankbranch;
 
     public String getAccount_id() {
         return account_id;
@@ -79,4 +86,13 @@ public class Account {
     public void setSolde(Double solde) {
         this.solde = solde;
     }
+    
+        public BankBranch getBankbranch() {
+        return bankbranch;
+    }
+
+    public void setBankbranch(BankBranch bankbranch) {
+        this.bankbranch = bankbranch;
+    }
+
 }

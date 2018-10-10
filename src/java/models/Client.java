@@ -7,6 +7,7 @@ package models;
 
 import java.util.Date;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,7 +24,7 @@ public class Client {
     @Id
     @GeneratedValue
     @Column(length = 8, nullable = false, unique = true)
-    private int id_client;
+    private String id_client;
 
     @Column(nullable = false)
     private String nom;
@@ -46,11 +47,11 @@ public class Client {
     }
 
 
-    public int getId_client() {
+    public String getId_client() {
         return id_client;
     }
 
-    public void setId_client(int id_client) {
+    public void setId_client(String id_client) {
         this.id_client = id_client;
     }
 

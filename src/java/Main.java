@@ -1,10 +1,13 @@
 
 
+import Controlers.Controler;
+import DAO.AccountDAO;
 import DAO.ClientDAO;
 import DAO.DAO;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import models.Account;
 
 import models.Client;
 
@@ -24,46 +27,59 @@ public class Main {
     /**
      * Test pour les clients
      */
-    DAO dao = new ClientDAO();
-    /*DAO dao2 = new ClientDAO();
     
-    Client client = new Client();
+    /*
+    // Test OK
+    AccountDAO dao = AccountDAO.getInstance();
+    
+    Account account = new Account();
+    account.setIban("iban");
+    account.setLibelle("libelle");
+    account.setSolde(new Double(30000));
+    
+    Client client1 = new Client();
+    client1.setNaissance(new Date(2018,12,31));
+    client1.setNom("nom");
+    client1.setPrenom("prenom");
+    
     Client client2 = new Client();
+    client2.setNaissance(new Date(2018,12,31));
+    client2.setNom("nom2");
+    client2.setPrenom("prenom2");
     
-    client.setNom("Kervarec");
-    client.setPrenom("Samuel");
-    Date date = new Date("12/06/1991");
-    client.setNaissance(date);
-    dao.create(client);
+    List<Client> listClients = new ArrayList<>();
+    listClients.add(client1);
+    listClients.add(client2);
     
-    client2.setNom("BENABOU");
-    client2.setPrenom("Samuel");
-    Date date2 = new Date("12/06/1995");
-    client2.setNaissance(date2);
-    dao2.create(client2);
+    account.setMesClients(listClients);
     
-    System.out.println("TOOOOOOOOOOOOOOOOOo");
-    System.out.println(client.getId_client());
-    dao.delete(client);*/
+    dao.create(account);
     
-    List<Client> list;
+    Account account2 = new Account();
+    account2.setIban("iban2");
+    account2.setLibelle("libelle2");
+    account2.setSolde(new Double(30000));
     
-    list = new ArrayList<>();
-    list = dao.findAll();
+    Client client3 = new Client();
+    client3.setNaissance(new Date(2018,12,31));
+    client3.setNom("nom3");
+    client3.setPrenom("prenom3");
+    
+    List<Client> listClients2 = new ArrayList<>();
+    listClients2.add(client3);
+    
+     account2.setMesClients(listClients2);
+    
+    dao.create(account2);
    
-    Client client = (Client) dao.find(list.get(0).getId_client());
-    System.out.println(client.getNom());
+*/
     
-    System.out.println(list.get(0).getId_client());
+    AccountDAO dao = AccountDAO.getInstance();
+    dao.delete(dao.find("4"));
     
-        
     
-    // * Test pour les comptes bancaires
-      //  list = new ArrayList()<>;
+    
 
-    
-    
-    
     }
     
 }

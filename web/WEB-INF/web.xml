@@ -8,6 +8,10 @@
         <servlet-name>Servlet</servlet-name>
         <servlet-class>Servlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>form</servlet-name>
+        <servlet-class>Servlet.form</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>toto</servlet-name>
         <url-pattern>/toto</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>Servlet</servlet-name>
         <url-pattern>/Servlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>form</servlet-name>
+        <url-pattern>/form</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

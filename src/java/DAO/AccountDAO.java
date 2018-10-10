@@ -12,19 +12,24 @@ import models.Account;
  *
  * @author MGU
  */
-public class AccountDAO extends AbstractDAO {
+public class AccountDAO extends AbstractDAO<Account> {
     
+    private static final AccountDAO instanceAccount = new AccountDAO();
+    
+    public static AccountDAO getInstance(){
+        return instanceAccount;
+    }
     
     public AccountDAO(){
         super();
     }   
 
-    @Override
-    public Account find(int id) {
+
+    public Account find(String id) {
         return em.find(Account.class, id);
     }
 
-    @Override
+
     public List<Account> findAll() {
         List<Account> listAccounts = em.createQuery("select a from Account as a").getResultList();
         return listAccounts;

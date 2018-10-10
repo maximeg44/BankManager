@@ -16,7 +16,7 @@ public interface DAO<T> {
     
     public void create(T obj);
     
-    public T find(int id);
+    public T find(String id);
     
     public void update(T obj);
     

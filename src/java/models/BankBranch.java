@@ -5,9 +5,12 @@
  */
 package models;
 
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -20,6 +23,7 @@ public class BankBranch {
     private int codeAgence;
 
     private String adresse;
+    
 
     public int getCodeAgence() {
         return codeAgence;
@@ -35,5 +39,6 @@ public class BankBranch {
 
     public void setAdresse(String adresse) {
         this.adresse = adresse;
-    }    
+    }        
+    
 }

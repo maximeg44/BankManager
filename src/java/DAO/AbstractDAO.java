@@ -14,7 +14,7 @@ import javax.persistence.Persistence;
  *
  * @author MGU
  */
-public abstract class AbstractDAO implements DAO {
+public abstract class AbstractDAO<T> {
     protected EntityManager em;
     protected EntityManagerFactory emf;
     
@@ -24,24 +24,32 @@ public abstract class AbstractDAO implements DAO {
         em = emf.createEntityManager();
     }
     
-    @Override
-    public void create(Object objet) {
+
+    public void create(T objet) {
         em.getTransaction().begin();
         em.persist(objet);
         em.getTransaction().commit();
     }
     
-    public void update(Object obj) {
+ 
+    public void update(T obj) {
         em.getTransaction().begin();
         em.merge(obj);
         em.getTransaction().commit();
     }
     
-    public void delete(Object obj) {
+
+    public void delete(T obj) {
         em.getTransaction().begin();
-        em.remove(obj);
+        try{
+            em.remove(obj);
+        }catch(Exception e){
+            System.out.println(e);
+        }
         em.getTransaction().commit();
     }
+    
+    
     
     
 }

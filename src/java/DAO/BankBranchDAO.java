@@ -12,18 +12,24 @@ import models.BankBranch;
  *
  * @author MGU
  */
-public class BankBranchDAO extends AbstractDAO {
+public class BankBranchDAO extends AbstractDAO<BankBranch> {
+    
+    private static final BankBranchDAO instanceBank = new BankBranchDAO();
+    
+    public static BankBranchDAO getInstance(){
+        return instanceBank;
+    }
     
     public BankBranchDAO(){
         super();
     }   
 
-    @Override
-    public BankBranch find(int id) {
+    
+    public BankBranch find(String id) {
         return em.find(BankBranch.class, id);
     }
 
-    @Override
+
     public List<BankBranch> findAll() {
         List<BankBranch> listBankBranchs = em.createQuery("select b from BankBranch as b").getResultList();
         return listBankBranchs;
