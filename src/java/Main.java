@@ -1,6 +1,8 @@
 
 
-import Controlers.Controler;
+import Controlers.AccountControler;
+import Controlers.BankBranchControler;
+import Controlers.ClientControler;
 import DAO.AccountDAO;
 import DAO.ClientDAO;
 import DAO.DAO;
@@ -8,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import models.Account;
+import models.BankBranch;
 
 import models.Client;
 
@@ -73,9 +76,45 @@ public class Main {
     dao.create(account2);
    
 */
+    //OK
+    ClientControler clientControler = new ClientControler();
+    String[] info = new String[3];
+    info[0]= "Nom";
+    info[1] = "Prenom";
+    info[2] = "1991/06/12";
+    Client client1 = clientControler.createClient(info);
     
-    AccountDAO dao = AccountDAO.getInstance();
-    dao.delete(dao.find("4"));
+    //OK
+    AccountControler accountControler = new AccountControler();
+    String[] infoAccount = new String[3];
+    infoAccount[0]= "Iban";
+    infoAccount[1] = "Libelle";
+    infoAccount[2] = "500";
+    Account account1 = accountControler.createAccount(infoAccount);
+    
+    
+    //OK
+    BankBranchControler branchControler = new BankBranchControler();
+    String infoBranch = "Adresse";
+    BankBranch branch= branchControler.createBranch(infoBranch);
+    
+    
+    //OK
+    infoAccount[1]= "Libelle2";
+   // accountControler.updateAccount(infoAccount, "102");
+    
+    //OK
+    account1.setBankbranch(branch);
+    accountControler.updateAccount(account1);
+    accountControler.addClientToAccount(client1, account1.getAccount_id());
+    
+    branchControler.removeBranch(branch);
+    
+    
+    
+    
+    
+    
     
     
     

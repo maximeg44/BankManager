@@ -7,6 +7,7 @@ package DAO;
 
 import java.util.List;
 import models.Account;
+import models.BankBranch;
 
 /**
  *
@@ -32,6 +33,11 @@ public class AccountDAO extends AbstractDAO<Account> {
 
     public List<Account> findAll() {
         List<Account> listAccounts = em.createQuery("select a from Account as a").getResultList();
+        return listAccounts;
+    }
+    
+    public List<Account> findAllByBranchId(BankBranch id){
+        List<Account> listAccounts = em.createQuery("select a from Account as a where a.FK_ACCOUNT_BANKBRANCH_CODEAGENCE = "+id.getCodeAgence()).getResultList();
         return listAccounts;
     }
    

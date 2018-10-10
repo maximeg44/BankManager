@@ -35,10 +35,88 @@ public class form extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
+            out.println("<style>form_main {\n" +
+"    width: 100%;\n" +
+"}\n" +
+".form_main h4 {\n" +
+"    font-family: roboto;\n" +
+"    font-size: 20px;\n" +
+"    font-weight: 300;\n" +
+"    margin-bottom: 15px;\n" +
+"    margin-top: 20px;\n" +
+"    text-transform: uppercase;\n" +
+"}\n" +
+".heading {\n" +
+"    border-bottom: 1px solid #fcab0e;\n" +
+"    padding-bottom: 9px;\n" +
+"    position: relative;\n" +
+"}\n" +
+".heading span {\n" +
+"    background: #9e6600 none repeat scroll 0 0;\n" +
+"    bottom: -2px;\n" +
+"    height: 3px;\n" +
+"    left: 0;\n" +
+"    position: absolute;\n" +
+"    width: 75px;\n" +
+"}   \n" +
+".form {\n" +
+"    border-radius: 7px;\n" +
+"    padding: 6px;\n" +
+"}\n" +
+".txt[type=\"text\"] {\n" +
+"    border: 1px solid #ccc;\n" +
+"    margin: 10px 0;\n" +
+"    padding: 10px 0 10px 5px;\n" +
+"    width: 100%;\n" +
+"}\n" +
+".txt_3[type=\"text\"] {\n" +
+"    margin: 10px 0 0;\n" +
+"    padding: 10px 0 10px 5px;\n" +
+"    width: 100%;\n" +
+"}\n" +
+".txt2[type=\"submit\"] {\n" +
+"    background: #242424 none repeat scroll 0 0;\n" +
+"    border: 1px solid #4f5c04;\n" +
+"    border-radius: 25px;\n" +
+"    color: #fff;\n" +
+"    font-size: 16px;\n" +
+"    font-style: normal;\n" +
+"    line-height: 35px;\n" +
+"    margin: 10px 0;\n" +
+"    padding: 0;\n" +
+"    text-transform: uppercase;\n" +
+"    width: 30%;\n" +
+"}\n" +
+".txt2:hover {\n" +
+"    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;\n" +
+"    color: #5793ef;\n" +
+"    transition: all 0.5s ease 0s;\n" +
+"}  </style>");
+            out.println("<link href=\"//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css\" rel=\"stylesheet\" id=\"bootstrap-css\">\n" +
+"<script src=\"//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js\"></script>\n" +
+"<script src=\"//code.jquery.com/jquery-1.11.1.min.js\"></script>");
             out.println("<title>Servlet form</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet form at " + request.getContextPath() + "</h1>");
+            out.println("<div class=\"container\">\n" +
+"	<div class=\"row\">\n" +
+"    <div class=\"col-md-4\">\n" +
+"		<div class=\"form_main\">\n" +
+"                <h4 class=\"heading\"> Contact <span></span></h4>\n" +
+"                <div class=\"form\">\n" +
+"                <form action=\"contact_send_mail.php\" method=\"post\" id=\"contactFrm\" name=\"contactFrm\">\n" +
+"                    <input type=\"text\" required=\"\" placeholder=\"Please input your Name\" value=\"\" name=\"name\" class=\"txt\">\n" +
+"                    <input type=\"text\" required=\"\" placeholder=\"Please input your FirstName\" value=\"\" name=\"firstName\" class=\"txt\">\n" +
+"                    <input type=\"text\" required=\"\" placeholder=\"Please input your date of birth\" value=\"\" name=\"date\" class=\"txt\">\n" +
+"                    \n" +
+"                	 <textarea placeholder=\"Your Message\" name=\"mess\" type=\"text\" class=\"txt_3\"></textarea>\n" +
+"                     <input type=\"submit\" value=\"submit\" name=\"submit\" class=\"txt2\">\n" +
+"                </form>\n" +
+"            </div>\n" +
+"            </div>\n" +
+"            </div\n" +
+"	</div>\n" +
+"</div>");
             out.println("</body>");
             out.println("</html>");
         }
