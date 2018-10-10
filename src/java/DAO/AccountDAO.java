@@ -6,8 +6,6 @@
 package DAO;
 
 import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import models.Account;
 
 /**
@@ -16,21 +14,19 @@ import models.Account;
  */
 public class AccountDAO extends AbstractDAO {
     
-    private EntityManager em;
-    private EntityManagerFactory emf;
     
     public AccountDAO(){
         super();
     }   
 
     @Override
-    public Object find(int id) {
+    public Account find(int id) {
         return em.find(Account.class, id);
     }
 
     @Override
     public List<Account> findAll() {
-        List<Account> listAccounts = em.createQuery("Select * FROM Account").getResultList();
+        List<Account> listAccounts = em.createQuery("select a from Account as a").getResultList();
         return listAccounts;
     }
    

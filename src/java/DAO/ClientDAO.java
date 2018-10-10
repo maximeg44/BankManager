@@ -5,25 +5,20 @@
  */
 package DAO;
 
-import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import models.Client;
 /**
  *
  * @author MGU
  */
 public class ClientDAO extends AbstractDAO {
-    //private EntityManager em;
-    private EntityManagerFactory emf;
     
     public ClientDAO(){
         super();
     }   
 
     @Override
-    public Object find(int id) {
+    public Client find(int id) {
         return em.find(Client.class, id);
     }
 

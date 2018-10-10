@@ -50,6 +50,9 @@ public class Main {
     
     list = new ArrayList<>();
     list = dao.findAll();
+   
+    Client client = (Client) dao.find(list.get(0).getId_client());
+    System.out.println(client.getNom());
     
     System.out.println(list.get(0).getId_client());
     
