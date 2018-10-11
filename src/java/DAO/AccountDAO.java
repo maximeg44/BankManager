@@ -6,6 +6,7 @@
 package DAO;
 
 import java.util.List;
+import javax.persistence.Query;
 import models.Account;
 import models.BankBranch;
 
@@ -37,7 +38,11 @@ public class AccountDAO extends AbstractDAO<Account> {
     }
     
     public List<Account> findAllByBranchId(BankBranch id){
-        List<Account> listAccounts = em.createQuery("select a from Account as a where a.FK_ACCOUNT_BANKBRANCH_CODEAGENCE = "+id.getCodeAgence()).getResultList();
+        List<Account> listAccounts;
+        Query query   = em.createQuery("select a from Account as a where a.bankbranch = :id");
+        query.setParameter("id",id);
+        //query.setParameter("id",Integer.toString(id.getCodeAgence()));
+        listAccounts = query.getResultList();
         return listAccounts;
     }
    
