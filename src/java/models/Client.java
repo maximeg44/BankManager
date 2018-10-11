@@ -5,6 +5,7 @@
  */
 package models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -20,7 +21,7 @@ import javax.persistence.Temporal;
  * @author MGU
  */
 @Entity
-public class Client {
+public class Client implements Serializable {
     @Id
     @GeneratedValue
     @Column(length = 8, nullable = false, unique = true)

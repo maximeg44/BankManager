@@ -6,6 +6,7 @@
 package models;
 
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,7 +17,7 @@ import javax.persistence.Id;
  * @author MGU
  */
 @Entity
-public class BankBranch {
+public class BankBranch implements Serializable{
     @Id
     @GeneratedValue
     @Column(length = 5, nullable = false, unique = true)
