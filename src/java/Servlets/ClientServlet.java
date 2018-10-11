@@ -25,7 +25,7 @@ public class ClientServlet extends HttpServlet {
     private final ClientDAO clientDAO = ClientDAO.getInstance();
     private final AccountDAO accountDAO = AccountDAO.getInstance();
     
-    public static final String VUE = "WEB-INF/formulaire.jsp";
+    public static final String VUE = "WEB-INF/formulaireClient.jsp";
     public static final String NOM = "nom";
     public static final String PRENOM = "prenom";
     public static final String DATE_NAISSANCE = "dateNaissance";
@@ -39,15 +39,12 @@ public class ClientServlet extends HttpServlet {
         String dateNaissance = request.getParameter(DATE_NAISSANCE);
         
         String[] infosClient = {nom, prenom, dateNaissance};
-        System.out.println(infosClient);
-
         
         try {
             createClient(infosClient);
         } catch(Exception e) {
             e.printStackTrace();
         }
-        //createClient(request, response);
     }
     
     

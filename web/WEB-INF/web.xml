@@ -5,8 +5,8 @@
         <servlet-class>Servlets.ClientServlet</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>AccountServlet</servlet-name>
-        <servlet-class>Servlets.AccountServlet</servlet-class>
+        <servlet-name>CompteServlet</servlet-name>
+        <servlet-class>Servlets.CompteServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>BankBranchServlet</servlet-name>
@@ -19,8 +19,8 @@
         <url-pattern>/clientServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>AccountServlet</servlet-name>
-        <url-pattern>/accountServlet</url-pattern>
+        <servlet-name>CompteServlet</servlet-name>
+        <url-pattern>/compteServlet</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>BankBranchServlet</servlet-name>

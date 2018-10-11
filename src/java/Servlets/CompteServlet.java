@@ -7,8 +7,12 @@ package Servlets;
 
 import DAO.AccountDAO;
 import DAO.ClientDAO;
+import java.io.IOException;
 import java.util.List;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import models.Compte;
 import models.BankBranch;
 import models.Client;
@@ -19,6 +23,30 @@ import models.Client;
  */
 public class CompteServlet extends HttpServlet {
     private final AccountDAO accountDAO = AccountDAO.getInstance();
+    
+    public static final String VUE = "WEB-INF/formulaireCompte.jsp";
+    public static final String LIBELLE = "libelle";
+    public static final String IBAN = "iban";
+    public static final String SOLDE = "solde";
+    
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        String libelle = request.getParameter(LIBELLE);
+        String iban = request.getParameter(IBAN);
+        String solde = request.getParameter(SOLDE);
+        
+        String[] infosCompte = {libelle, iban, solde};
+        System.out.println(infosCompte);
+       
+        try {
+            
+            createAccount(infosCompte);
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
     
     
     public Compte createAccount(String[] infoAccount){
