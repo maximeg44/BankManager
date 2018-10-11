@@ -3,19 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controlers;
+package Servlets;
 
 import DAO.AccountDAO;
 import DAO.BankBranchDAO;
 import java.util.List;
-import models.Account;
+import javax.servlet.http.HttpServlet;
+import models.Compte;
 import models.BankBranch;
 
 /**
  *
  * @author MGU
  */
-public class BankBranchControler {
+public class BankBranchServlet extends HttpServlet {
     private final BankBranchDAO bankBranchDAO = BankBranchDAO.getInstance();
     private final AccountDAO accountDAO = AccountDAO.getInstance();
     
@@ -44,10 +45,10 @@ public class BankBranchControler {
     }
            
     public void removeBranch(BankBranch branch){
-        AccountControler accountControler = new AccountControler();
+        CompteServlet accountControler = new CompteServlet();
         try{
-            List<Account> comptes = accountControler.findAllByBranchId(branch);
-            for (Account account : comptes) {
+            List<Compte> comptes = accountControler.findAllByBranchId(branch);
+            for (Compte account : comptes) {
                 account.setBankbranch(null);
                 accountDAO.update(account);
             }

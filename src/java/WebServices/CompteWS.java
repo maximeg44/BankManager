@@ -6,17 +6,30 @@
 package WebServices;
 
 import DAO.AccountDAO;
+import java.util.List;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
+import models.Compte;
 
 /**
  *
  * @author yoelb
  */
 @WebService(serviceName = "AccountWS")
-public class AccountWS {
-
+public class CompteWS {
+    
+    @WebMethod(operationName = "findAccountById")
+    public Compte findAccountById(@WebParam(name = "idAccount") String idAccount) {
+        return AccountDAO.getInstance().find(idAccount);
+    }
+    
+    @WebMethod(operationName = "findAllAccounts")
+    public List<Compte> findAllAccounts() {
+        return AccountDAO.getInstance().findAll();
+    }
+    
+    
     @WebMethod(operationName = "deleteAccount")
     public String deleteAccount(@WebParam(name = "idAccount") String idAccount) {
         AccountDAO.getInstance().delete(AccountDAO.getInstance().find(idAccount));

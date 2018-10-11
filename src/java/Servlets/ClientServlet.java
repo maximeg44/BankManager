@@ -3,22 +3,52 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controlers;
+package Servlets;
 
 import DAO.AccountDAO;
 import DAO.ClientDAO;
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import models.Client;
-import models.Account;
+import models.Compte;
 
 /**
  *
  * @author MGU
  */
-public class ClientControler {
+public class ClientServlet extends HttpServlet {
     private final ClientDAO clientDAO = ClientDAO.getInstance();
     private final AccountDAO accountDAO = AccountDAO.getInstance();
+    
+    public static final String VUE = "WEB-INF/formulaire.jsp";
+    public static final String NOM = "nom";
+    public static final String PRENOM = "prenom";
+    public static final String DATE_NAISSANCE = "dateNaissance";
+    
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        String nom = request.getParameter(NOM);
+        String prenom = request.getParameter(PRENOM);
+        String dateNaissance = request.getParameter(DATE_NAISSANCE);
+        
+        String[] infosClient = {nom, prenom, dateNaissance};
+        System.out.println(infosClient);
+
+        
+        try {
+            createClient(infosClient);
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+        //createClient(request, response);
+    }
     
     
     public Client createClient(String[] infoClient){
@@ -52,9 +82,9 @@ public class ClientControler {
     
     public void removeClient(Client client){
         try{
-            List<Account> comptes = client.getMescomptes();
+            List<Compte> comptes = client.getMescomptes();
             //List<Account> comptes = accountDAO.findAccountByClient(client);
-            for (Account account : comptes) {
+            for (Compte account : comptes) {
                 account.getMesClients().remove(client);
                 
                 if (account.getMesClients().isEmpty()) {

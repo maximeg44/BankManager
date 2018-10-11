@@ -28,4 +28,10 @@ public class ClientWS {
     public List<Client> findAllClients() {
         return ClientDAO.getInstance().findAll();
     }
+    
+    @WebMethod(operationName = "deleteClient")
+    public String deleteClient(@WebParam(name = "idClient") String idClient) {
+        ClientDAO.getInstance().delete(ClientDAO.getInstance().find(idClient));
+        return "Client supprimé ";
+    }
 }

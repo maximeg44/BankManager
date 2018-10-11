@@ -1,3 +1,11 @@
+<%-- 
+    Document   : formulaireBranche
+    Created on : 11 oct. 2018, 14:51:04
+    Author     : yoelb
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <head>
     <meta charset="utf-8">
@@ -22,7 +30,7 @@
         <nav>
           <ul class="nav nav-pills float-right">
             <li class="nav-item">
-              <a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="./index.html">Home</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="./listeClients.jsp">Liste Clients</a>
@@ -37,16 +45,32 @@
 
         
       <div class="jumbotron">
-        <div class="row">
-            <div class="col text-center"><a href="./formulaireClient.jsp" class="btn btn-success"><span class="fa fa-users"></span> Nouveau Client </a></div>
-            <div class="col text-center"><a href="./formulaireCompte.jsp" class="btn btn-success"><span class="fas fa-piggy-bank"></span> Nouveau Compte </a></div>
-            <div class="col text-center"><a href="./formulaireBranche.jsp" class="btn btn-success"><span class="fas fa-university"></span> Nouvelle Agence Bancaire </a></div>
-        </div>
-      </div>
+          
+          <form class="form-horizontal" method="POST" action="bankBranchServlet">
+<fieldset>
 
-      <div class="row marketing">
-        
+<!-- Form Name -->
+<legend>Créer une nouvelle agence bancaire</legend>
 
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="Adresse">Adresse</label>  
+  <div class="col-md-4">
+  <input id="adresse" name="adresse" type="text" placeholder="Adresse" class="form-control input-md" required="">
+    
+  </div>
+</div>
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="Valider"></label>
+  <div class="col-md-4">
+    <button id="Valider" name="Valider" class="btn btn-success">Valider</button>
+  </div>
+</div>
+
+</fieldset>
+</form>
         
       </div>
 

@@ -7,7 +7,7 @@ package DAO;
 
 import java.util.List;
 import javax.persistence.Query;
-import models.Account;
+import models.Compte;
 import models.BankBranch;
 import models.Client;
 
@@ -15,7 +15,7 @@ import models.Client;
  *
  * @author MGU
  */
-public class AccountDAO extends AbstractDAO<Account> {
+public class AccountDAO extends AbstractDAO<Compte> {
     
     private static final AccountDAO instanceAccount = new AccountDAO();
     
@@ -28,18 +28,18 @@ public class AccountDAO extends AbstractDAO<Account> {
     }   
 
 
-    public Account find(String id) {
-        return em.find(Account.class, id);
+    public Compte find(String id) {
+        return em.find(Compte.class, id);
     }
 
 
-    public List<Account> findAll() {
-        List<Account> listAccounts = em.createQuery("select a from Account as a").getResultList();
+    public List<Compte> findAll() {
+        List<Compte> listAccounts = em.createQuery("select a from Account as a").getResultList();
         return listAccounts;
     }
     
-    public List<Account> findAllByBranchId(BankBranch branch){
-        List<Account> listAccounts;
+    public List<Compte> findAllByBranchId(BankBranch branch){
+        List<Compte> listAccounts;
         Query query   = em.createQuery("select a from Account as a where a.bankbranch = :branch");
         query.setParameter("branch",branch);
         listAccounts = query.getResultList();

@@ -1,3 +1,11 @@
+<%-- 
+    Document   : formulaireCompte
+    Created on : 11 oct. 2018, 14:51:04
+    Author     : yoelb
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <head>
     <meta charset="utf-8">
@@ -22,7 +30,7 @@
         <nav>
           <ul class="nav nav-pills float-right">
             <li class="nav-item">
-              <a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="./index.html">Home</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="./listeClients.jsp">Liste Clients</a>
@@ -37,16 +45,50 @@
 
         
       <div class="jumbotron">
-        <div class="row">
-            <div class="col text-center"><a href="./formulaireClient.jsp" class="btn btn-success"><span class="fa fa-users"></span> Nouveau Client </a></div>
-            <div class="col text-center"><a href="./formulaireCompte.jsp" class="btn btn-success"><span class="fas fa-piggy-bank"></span> Nouveau Compte </a></div>
-            <div class="col text-center"><a href="./formulaireBranche.jsp" class="btn btn-success"><span class="fas fa-university"></span> Nouvelle Agence Bancaire </a></div>
-        </div>
-      </div>
+          
+          <form class="form-horizontal" method="POST" action="compteServlet">
+<fieldset>
 
-      <div class="row marketing">
-        
+<!-- Form Name -->
+<legend>Créer un nouveau Compte</legend>
 
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="Libelle">Libelle</label>  
+  <div class="col-md-4">
+  <input id="libelle" name="libelle" type="text" placeholder="Libelle" class="form-control input-md" required="">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="Iban">Iban</label>  
+  <div class="col-md-4">
+  <input id="iban" name="iban" type="text" placeholder="Iban" class="form-control input-md" required="">
+    
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="Solde">Solde</label>  
+  <div class="col-md-4">
+  <input id="solde" name="solde" type="text" placeholder="Solde Initial" class="form-control input-md" required="">
+    
+  </div>
+</div>
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="Valider"></label>
+  <div class="col-md-4">
+    <button id="Valider" name="Valider" class="btn btn-success">Valider</button>
+  </div>
+</div>
+
+</fieldset>
+</form>
         
       </div>
 
@@ -59,3 +101,4 @@
 
 </body>
 </html>
+

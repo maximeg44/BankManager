@@ -1,9 +1,9 @@
 
 
-import Controlers.AccountControler;
-import Controlers.BankBranchControler;
-import Controlers.ClientControler;
-import models.Account;
+import Servlets.CompteServlet;
+import Servlets.BankBranchServlet;
+import Servlets.ClientServlet;
+import models.Compte;
 import models.BankBranch;
 
 import models.Client;
@@ -71,7 +71,7 @@ public class Main {
    
 */
     //OK
-    ClientControler clientControler = new ClientControler();
+    ClientServlet clientControler = new ClientServlet();
     String[] info = new String[3];
     info[0]= "Nom";
     info[1] = "Prenom";
@@ -79,16 +79,16 @@ public class Main {
     Client client1 = clientControler.createClient(info);
     
     //OK
-    AccountControler accountControler = new AccountControler();
+    CompteServlet accountControler = new CompteServlet();
     String[] infoAccount = new String[3];
     infoAccount[0]= "Iban";
     infoAccount[1] = "Libelle";
     infoAccount[2] = "500";
-    Account account1 = accountControler.createAccount(infoAccount);
+    Compte account1 = accountControler.createAccount(infoAccount);
     
     
     //OK
-    BankBranchControler branchControler = new BankBranchControler();
+    BankBranchServlet branchControler = new BankBranchServlet();
     String infoBranch = "Adresse";
     BankBranch branch= branchControler.createBranch(infoBranch);
     

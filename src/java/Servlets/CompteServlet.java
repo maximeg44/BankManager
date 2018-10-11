@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Controlers;
+package Servlets;
 
 import DAO.AccountDAO;
 import DAO.ClientDAO;
 import java.util.List;
 import javax.servlet.http.HttpServlet;
-import models.Account;
+import models.Compte;
 import models.BankBranch;
 import models.Client;
 
@@ -17,12 +17,12 @@ import models.Client;
  *
  * @author MGU
  */
-public class AccountControler {
+public class CompteServlet extends HttpServlet {
     private final AccountDAO accountDAO = AccountDAO.getInstance();
     
     
-    public Account createAccount(String[] infoAccount){
-        Account account = new Account();
+    public Compte createAccount(String[] infoAccount){
+        Compte account = new Compte();
         account.setIban(infoAccount[0]);
         account.setLibelle(infoAccount[1]);
         account.setSolde(new Double(infoAccount[2]));        
@@ -30,8 +30,8 @@ public class AccountControler {
         return account;        
     }
     
-    public Account updateAccount(String[] infoAccount, String idAccount){
-        Account account = findById(idAccount);
+    public Compte updateAccount(String[] infoAccount, String idAccount){
+        Compte account = findById(idAccount);
         account.setIban(infoAccount[0]);
         account.setLibelle(infoAccount[1]);
         account.setSolde(new Double(infoAccount[2]));   
@@ -40,30 +40,30 @@ public class AccountControler {
         return account;        
     }
     
-    public Account updateAccount(Account account){
+    public Compte updateAccount(Compte account){
        accountDAO.update(account);
        return account;
        
     }
     
-    public Account findById(String id){
+    public Compte findById(String id){
         return accountDAO.find(id);
     }
     
-    public List<Account> findAllAccounts(){
+    public List<Compte> findAllAccounts(){
         return accountDAO.findAll();
     }
            
-    public void removeAccount(Account account){
+    public void removeAccount(Compte account){
         accountDAO.delete(account);
     }
     
-    public List<Account> findAllByBranchId(BankBranch branch){
+    public List<Compte> findAllByBranchId(BankBranch branch){
         return accountDAO.findAllByBranchId(branch);
     }
     
     public void addClientToAccount(Client client, String accountId){
-        Account account =  findById(accountId);
+        Compte account =  findById(accountId);
         account.getMesClients().add(client);
         client.getMescomptes().add(account);
         accountDAO.update(account);

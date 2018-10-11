@@ -4,11 +4,11 @@
     <service name="ClientWS">
       <implementation-class>WebServices.ClientWS</implementation-class>
     </service>
-    <service name="AccountWS">
-      <implementation-class>WebServices.AccountWS</implementation-class>
-    </service>
     <service name="BankBranchWS">
       <implementation-class>WebServices.BankBranchWS</implementation-class>
+    </service>
+    <service name="CompteWS">
+      <implementation-class>WebServices.CompteWS</implementation-class>
     </service>
   </services>
   <clients/>

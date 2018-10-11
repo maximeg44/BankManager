@@ -1,3 +1,12 @@
+<%-- 
+    Document   : listeComptes
+    Created on : 11 oct. 2018, 13:02:45
+    Author     : yoelb
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+
 <!DOCTYPE html>
 <head>
     <meta charset="utf-8">
@@ -22,13 +31,13 @@
         <nav>
           <ul class="nav nav-pills float-right">
             <li class="nav-item">
-              <a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="./index.html">Home</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="./listeClients.jsp">Liste Clients</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="./listeComptes.jsp">Liste Comptes</a>
+                <a class="nav-link active" href="#">Liste Comptes<span class="sr-only">(current)</span></a>
             </li>
           </ul>
         </nav>
@@ -37,16 +46,6 @@
 
         
       <div class="jumbotron">
-        <div class="row">
-            <div class="col text-center"><a href="./formulaireClient.jsp" class="btn btn-success"><span class="fa fa-users"></span> Nouveau Client </a></div>
-            <div class="col text-center"><a href="./formulaireCompte.jsp" class="btn btn-success"><span class="fas fa-piggy-bank"></span> Nouveau Compte </a></div>
-            <div class="col text-center"><a href="./formulaireBranche.jsp" class="btn btn-success"><span class="fas fa-university"></span> Nouvelle Agence Bancaire </a></div>
-        </div>
-      </div>
-
-      <div class="row marketing">
-        
-
         
       </div>
 
@@ -59,3 +58,4 @@
 
 </body>
 </html>
+

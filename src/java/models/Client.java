@@ -37,7 +37,7 @@ public class Client implements Serializable {
     private Date naissance;
 
     @ManyToMany(mappedBy = "mesClients")
-    private List<Account> mescomptes = new ArrayList<>();
+    private List<Compte> mescomptes = new ArrayList<>();
 
 
     public  Client(){}
@@ -80,11 +80,11 @@ public class Client implements Serializable {
         this.naissance = naissance;
     }
 
-    public List<Account> getMescomptes() {
+    public List<Compte> getMescomptes() {
         return mescomptes;
     }
 
-    public void setMescomptes(List<Account> mescomptes) {
+    public void setMescomptes(List<Compte> mescomptes) {
         this.mescomptes = mescomptes;
     }    
 }

@@ -23,7 +23,7 @@ import javax.persistence.ManyToOne;
  * @author MGU
  */
 @Entity
-public class Account implements Serializable {
+public class Compte implements Serializable {
     @Id
     @GeneratedValue
     @Column(length = 11, nullable = false, unique = true)
