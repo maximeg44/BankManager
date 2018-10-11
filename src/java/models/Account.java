@@ -5,6 +5,7 @@
  */
 package models;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -32,7 +33,7 @@ public class Account {
     @JoinTable(name = "compte_client",
             joinColumns = @JoinColumn(name = "a_id", referencedColumnName = "account_id"),
             inverseJoinColumns = @JoinColumn(name = "c_id", referencedColumnName = "id_client"))
-    private List<Client> mesClients;
+    private List<Client> mesClients = new ArrayList<>();
 
 
     private String libelle;

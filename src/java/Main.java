@@ -3,12 +3,6 @@
 import Controlers.AccountControler;
 import Controlers.BankBranchControler;
 import Controlers.ClientControler;
-import DAO.AccountDAO;
-import DAO.ClientDAO;
-import DAO.DAO;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 import models.Account;
 import models.BankBranch;
 
@@ -108,7 +102,18 @@ public class Main {
     accountControler.updateAccount(account1);
     accountControler.addClientToAccount(client1, account1.getAccount_id());
     
-    branchControler.removeBranch(branch);
+    //OK
+    /*branchControler.removeBranch(branch);
+    
+    clientControler.removeClient(client1);**/
+    
+    Client cli = clientControler.findById(client1.getId_client());
+    
+    clientControler.removeClient(cli);
+    
+    
+    
+    
     
     
     

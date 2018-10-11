@@ -7,7 +7,6 @@ package Controlers;
 
 import DAO.AccountDAO;
 import DAO.ClientDAO;
-import java.util.Date;
 import java.util.List;
 import models.Account;
 import models.BankBranch;
@@ -65,7 +64,9 @@ public class AccountControler {
     public void addClientToAccount(Client client, String accountId){
         Account account =  findById(accountId);
         account.getMesClients().add(client);
+        client.getMescomptes().add(account);
         accountDAO.update(account);
+        ClientDAO.getInstance().update(client);
     }
     
 }

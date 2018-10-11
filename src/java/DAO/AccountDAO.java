@@ -9,6 +9,7 @@ import java.util.List;
 import javax.persistence.Query;
 import models.Account;
 import models.BankBranch;
+import models.Client;
 
 /**
  *
@@ -44,6 +45,14 @@ public class AccountDAO extends AbstractDAO<Account> {
         //query.setParameter("id",Integer.toString(id.getCodeAgence()));
         listAccounts = query.getResultList();
         return listAccounts;
+    }
+
+    public List<Account> findAccountByClient(Client client) {
+        List<Account> listAccounts;
+        Query query   = em.createQuery("select a from Account as a where a.mesClients exists in )");
+        query.setParameter("id",client.getId_client());
+        listAccounts = query.getResultList();
+        return listAccounts;        
     }
    
 }

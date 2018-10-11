@@ -5,6 +5,7 @@
  */
 package Controlers;
 
+import DAO.AccountDAO;
 import DAO.ClientDAO;
 import java.util.Date;
 import java.util.List;
@@ -17,6 +18,7 @@ import models.Account;
  */
 public class ClientControler {
     private ClientDAO clientDAO = ClientDAO.getInstance();
+    private AccountDAO accountDAO = AccountDAO.getInstance();
     
     
     public Client createClient(String[] infoClient){
@@ -51,12 +53,13 @@ public class ClientControler {
     public void removeClient(Client client){
         try{
             List<Account> comptes = client.getMescomptes();
+            //List<Account> comptes = accountDAO.findAccountByClient(client);
             for (Account account : comptes) {
                 account.getMesClients().remove(client);
-                /*
+                
                 if (account.getMesClients().isEmpty()) {
-                    accountDAO.delete(account);
-                }*/
+                    accountDAO.delete(accountDAO.find(account.getAccount_id()));
+                }
             }
             clientDAO.delete(client);
         }catch(Exception e){

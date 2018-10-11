@@ -5,6 +5,7 @@
  */
 package models;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -36,7 +37,7 @@ public class Client {
     private Date naissance;
 
     @ManyToMany(mappedBy = "mesClients")
-    private List<Account> mescomptes;
+    private List<Account> mescomptes = new ArrayList<>();
 
 
     public  Client(){}
