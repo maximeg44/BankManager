@@ -17,8 +17,8 @@ import models.Account;
  * @author MGU
  */
 public class ClientControler {
-    private ClientDAO clientDAO = ClientDAO.getInstance();
-    private AccountDAO accountDAO = AccountDAO.getInstance();
+    private final ClientDAO clientDAO = ClientDAO.getInstance();
+    private final AccountDAO accountDAO = AccountDAO.getInstance();
     
     
     public Client createClient(String[] infoClient){

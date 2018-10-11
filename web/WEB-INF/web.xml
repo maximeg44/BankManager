@@ -12,6 +12,10 @@
         <servlet-name>form</servlet-name>
         <servlet-class>Servlet.form</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>servelet</servlet-name>
+        <servlet-class>Servlet.servelet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>toto</servlet-name>
         <url-pattern>/toto</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>form</servlet-name>
         <url-pattern>/form</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>servelet</servlet-name>
+        <url-pattern>/servelet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

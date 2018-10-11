@@ -16,8 +16,8 @@ import models.BankBranch;
  * @author MGU
  */
 public class BankBranchControler {
-    private BankBranchDAO bankBranchDAO = BankBranchDAO.getInstance();
-    private AccountDAO accountDAO = AccountDAO.getInstance();
+    private final BankBranchDAO bankBranchDAO = BankBranchDAO.getInstance();
+    private final AccountDAO accountDAO = AccountDAO.getInstance();
     
     
     public BankBranch createBranch(String infoBranch){

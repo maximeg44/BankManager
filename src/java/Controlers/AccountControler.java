@@ -8,6 +8,7 @@ package Controlers;
 import DAO.AccountDAO;
 import DAO.ClientDAO;
 import java.util.List;
+import javax.servlet.http.HttpServlet;
 import models.Account;
 import models.BankBranch;
 import models.Client;
@@ -17,7 +18,7 @@ import models.Client;
  * @author MGU
  */
 public class AccountControler {
-    private AccountDAO accountDAO = AccountDAO.getInstance();
+    private final AccountDAO accountDAO = AccountDAO.getInstance();
     
     
     public Account createAccount(String[] infoAccount){
@@ -57,8 +58,8 @@ public class AccountControler {
         accountDAO.delete(account);
     }
     
-    public List<Account> findAllByBranchId(BankBranch codeAgence){
-        return accountDAO.findAllByBranchId(codeAgence);
+    public List<Account> findAllByBranchId(BankBranch branch){
+        return accountDAO.findAllByBranchId(branch);
     }
     
     public void addClientToAccount(Client client, String accountId){

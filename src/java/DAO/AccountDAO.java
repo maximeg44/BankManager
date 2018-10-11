@@ -38,21 +38,12 @@ public class AccountDAO extends AbstractDAO<Account> {
         return listAccounts;
     }
     
-    public List<Account> findAllByBranchId(BankBranch id){
+    public List<Account> findAllByBranchId(BankBranch branch){
         List<Account> listAccounts;
-        Query query   = em.createQuery("select a from Account as a where a.bankbranch = :id");
-        query.setParameter("id",id);
-        //query.setParameter("id",Integer.toString(id.getCodeAgence()));
+        Query query   = em.createQuery("select a from Account as a where a.bankbranch = :branch");
+        query.setParameter("branch",branch);
         listAccounts = query.getResultList();
         return listAccounts;
-    }
-
-    public List<Account> findAccountByClient(Client client) {
-        List<Account> listAccounts;
-        Query query   = em.createQuery("select a from Account as a where a.mesClients exists in )");
-        query.setParameter("id",client.getId_client());
-        listAccounts = query.getResultList();
-        return listAccounts;        
     }
    
 }

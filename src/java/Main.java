@@ -105,11 +105,12 @@ public class Main {
     //OK
     /*branchControler.removeBranch(branch);
     
-    clientControler.removeClient(client1);**/
+    clientControler.removeClient(client1);
     
     Client cli = clientControler.findById(client1.getId_client());
     
     clientControler.removeClient(cli);
+    **/
     
     
     
