@@ -16,11 +16,6 @@
 
     <title>Bank Manager</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="../../css/editor.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="narrow-jumbotron.css" rel="stylesheet">
   </head>
 
   <body>

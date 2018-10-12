@@ -34,13 +34,13 @@ public class AccountDAO extends AbstractDAO<Compte> {
 
 
     public List<Compte> findAll() {
-        List<Compte> listAccounts = em.createQuery("select a from Account as a").getResultList();
+        List<Compte> listAccounts = em.createQuery("select a from Compte as a").getResultList();
         return listAccounts;
     }
     
     public List<Compte> findAllByBranchId(BankBranch branch){
         List<Compte> listAccounts;
-        Query query   = em.createQuery("select a from Account as a where a.bankbranch = :branch");
+        Query query   = em.createQuery("select a from Compte as a where a.bankbranch = :branch");
         query.setParameter("branch",branch);
         listAccounts = query.getResultList();
         return listAccounts;

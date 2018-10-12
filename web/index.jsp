@@ -8,11 +8,6 @@
 
     <title>Bank Manager</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="../../css/editor.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="narrow-jumbotron.css" rel="stylesheet">
   </head>
 
   <body>
@@ -25,10 +20,10 @@
               <a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="./listeClients.jsp">Liste Clients</a>
+                <a class="nav-link" href="./clientServlet">Liste Clients</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="./listeComptes.jsp">Liste Comptes</a>
+                <a class="nav-link" href="./compteServlet">Liste Comptes</a>
             </li>
           </ul>
         </nav>
@@ -45,7 +40,7 @@
       </div>
 
       <footer class="footer">
-        <p>Â© BENABOU - GUENEGO Copyright 2018</p>
+        <p>© BENABOU - GUENEGO Copyright 2018</p>
       </footer>
 
     </div> <!-- /container -->

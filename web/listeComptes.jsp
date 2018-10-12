@@ -1,9 +1,11 @@
 <%-- 
-    Document   : listeComptes
+    Document   : listeClients
     Created on : 11 oct. 2018, 12:54:51
     Author     : yoelb
 --%>
 
+<%@page import="models.Compte"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 
@@ -17,11 +19,6 @@
 
     <title>Bank Manager</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="../../css/editor.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="narrow-jumbotron.css" rel="stylesheet">
   </head>
 
   <body>
@@ -31,10 +28,10 @@
         <nav>
           <ul class="nav nav-pills float-right">
             <li class="nav-item">
-                <a class="nav-link" href="./index.html">Home</a>
+                <a class="nav-link" href="./index.jsp">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="./listeClients.jsp">Liste Clients</a>
+                <a class="nav-link" href="./clientServlet">Liste Clients</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link active" href="#">Liste Comptes<span class="sr-only">(current)</span></a>
@@ -62,32 +59,48 @@
                   </div>
                   <div class="col col-xs-6 text-right">
                       <a href="./formulaireCompte.jsp" class="btn btn-sm btn-primary btn-create">
-                          <span class="fa fa-users"></span> Nouveau Compte
+                          <span class="fa fa-users"></span> Nouveau Compte 
                       </a>
                   </div>
                 </div>
               </div>
                 
-              <div class="panel-body">
+            <div class="panel-body">
+              
+            <%
+            if(request.getAttribute("listComptes") != null) {
+                List<Compte> listComptes = (List<Compte>) request.getAttribute("listComptes"); 
+            %>
+                
+                
                 <table class="table table-striped table-bordered table-list">
                   <thead>
                     <tr>
                         <th><em class="fa fa-cog"></em></th>
                         <th class="hidden-xs">ID</th>
-                        <th>Adresse</th>
+                        <th>Iban</th>
+                        <th>Libelle</th>
+                        <th>Solde</th>
                     </tr> 
                   </thead>
                   <tbody>
+                      <%
+                for (Compte compte : listComptes) {
+                %>
                           <tr>
                             <td align="center">
                               <a class="btn btn-warning"><em class="fas fa-edit"></em></a>
                               <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
                             </td>
-                            <td class="hidden-xs">1</td>
-                            <td>John Doe</td>
+                            <td class="hidden-xs"><%=compte.getAccount_id()%></td>
+                            <td><%=compte.getIban()%></td>
+                            <td><%=compte.getLibelle()%></td>
+                            <td><%=compte.getSolde()%></td>
                           </tr>
-                        </tbody>
+                          <% } %>
+                  </tbody>
                 </table>
+                <% } %>
             
               </div>
             </div>
@@ -105,5 +118,3 @@
 
 </body>
 </html>
-</html>
-

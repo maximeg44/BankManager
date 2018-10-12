@@ -4,6 +4,8 @@
     Author     : yoelb
 --%>
 
+<%@page import="models.Client"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 
@@ -17,11 +19,6 @@
 
     <title>Bank Manager</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="../../css/editor.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="narrow-jumbotron.css" rel="stylesheet">
   </head>
 
   <body>
@@ -31,13 +28,13 @@
         <nav>
           <ul class="nav nav-pills float-right">
             <li class="nav-item">
-                <a class="nav-link" href="./index.html">Home</a>
+                <a class="nav-link" href="./index.jsp">Home</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link active" href="#">Liste Clients<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="./listeComptes.jsp">Liste Comptes</a>
+                <a class="nav-link" href="./compteServlet">Liste Comptes</a>
             </li>
           </ul>
         </nav>
@@ -68,7 +65,14 @@
                 </div>
               </div>
                 
-              <div class="panel-body">
+            <div class="panel-body">
+              
+            <%
+            if(request.getAttribute("listClients") != null) {
+                List<Client> listClients = (List<Client>) request.getAttribute("listClients"); 
+            %>
+                
+                
                 <table class="table table-striped table-bordered table-list">
                   <thead>
                     <tr>
@@ -76,20 +80,27 @@
                         <th class="hidden-xs">ID</th>
                         <th>Nom</th>
                         <th>Prenom</th>
+                        <th>Date de Naissance</th>
                     </tr> 
                   </thead>
                   <tbody>
+                      <%
+                for (Client client: listClients) {
+                %>
                           <tr>
                             <td align="center">
                               <a class="btn btn-warning"><em class="fas fa-edit"></em></a>
                               <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
                             </td>
-                            <td class="hidden-xs">1</td>
-                            <td>John Doe</td>
-                            <td>johndoe@example.com</td>
+                            <td class="hidden-xs"><%=client.getId_client()%></td>
+                            <td><%=client.getNom()%></td>
+                            <td><%=client.getPrenom()%></td>
+                            <td><%=client.getNaissance()%></td>
                           </tr>
-                        </tbody>
+                          <% } %>
+                  </tbody>
                 </table>
+                <% } %>
             
               </div>
             </div>

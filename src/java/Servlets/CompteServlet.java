@@ -48,6 +48,16 @@ public class CompteServlet extends HttpServlet {
         }
     }
     
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        List<Compte> listComptes = (List<Compte>) accountDAO.findAll();     
+        request.setAttribute("listComptes", listComptes);
+        request.getRequestDispatcher("/listeComptes.jsp").forward(request, response);
+
+    }
+    
     
     public Compte createAccount(String[] infoAccount){
         Compte account = new Compte();
