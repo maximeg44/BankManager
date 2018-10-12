@@ -46,7 +46,7 @@
         
       <div class="jumbotron">
           
-          <form class="form-horizontal" method="POST" action="compteServlet">
+<form class="form-horizontal" method="POST" action="compteServlet">
 <fieldset>
 
 <!-- Form Name -->
