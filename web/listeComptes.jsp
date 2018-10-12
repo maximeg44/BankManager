@@ -59,7 +59,7 @@
                   </div>
                   <div class="col col-xs-6 text-right">
                       <a href="./formulaireCompte.jsp" class="btn btn-sm btn-primary btn-create">
-                          <span class="fa fa-users"></span> Nouveau Compte 
+                          <span class="fas fa-piggy-bank"></span> Nouveau Compte 
                       </a>
                   </div>
                 </div>
