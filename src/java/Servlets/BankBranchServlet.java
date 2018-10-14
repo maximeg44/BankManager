@@ -17,7 +17,7 @@ import models.Compte;
 import models.BankBranch;
 
 /**
- *
+ * La Servlet liée à l'objet BankBranch.
  * @author MGU
  */
 public class BankBranchServlet extends HttpServlet {

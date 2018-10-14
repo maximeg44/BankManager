@@ -7,8 +7,9 @@ package DAO;
 
 import java.util.List;
 import models.Client;
+
 /**
- *
+ * ClientDAO qui étend la classe abstraite du DAO.
  * @author MGU
  */
 public class ClientDAO extends AbstractDAO<Client> {
@@ -22,10 +23,19 @@ public class ClientDAO extends AbstractDAO<Client> {
         super();
     }   
 
+    /**
+     * Méthode pour chercher un client en fonction de son identifiant.
+     * @param id l'id du client à chercher.
+     * @return le client cherché.
+     */
     public Client find(String id) {
         return em.find(Client.class, id);
     }
 
+    /**
+     * Méthode qui retourne la liste de tous les clients présents en base.
+     * @return la liste de tous les clients présents en base.
+     */
     public List<Client> findAll() {
         List<Client> listClients = em.createQuery("select c from Client as c").getResultList();
         return listClients;

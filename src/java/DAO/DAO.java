@@ -8,7 +8,7 @@ package DAO;
 import java.util.List;
 
 /**
- *
+ * Interface DAO.
  * @author MGU
  * @param <T>
  */

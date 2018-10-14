@@ -17,7 +17,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Temporal;
 
 /**
- *
+ * Classe Client qui définit les éléments qui caractérisent l'objet en spécifiant 
+ * les relations avec les autres objets.
  * @author MGU
  */
 @Entity

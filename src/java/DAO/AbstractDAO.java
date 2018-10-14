@@ -24,20 +24,30 @@ public abstract class AbstractDAO<T> {
     }
     
 
+    /**
+     * Méthode qui permet de créer un objet T.
+     * @param objet l'objet à créer.
+     */
     public void create(T objet) {
         em.getTransaction().begin();
         em.persist(objet);
         em.getTransaction().commit();
     }
     
- 
+    /**
+     * Méthode qui permet de mettre à jour un objet T.
+     * @param obj l'objet à mettre à jour.
+     */
     public void update(T obj) {
         em.getTransaction().begin();
         em.merge(obj);
         em.getTransaction().commit();
     }
     
-
+    /**
+     * Méthode qui permet de supprimer un objet T.
+     * @param obj l'objet à supprimer.
+     */
     public void delete(T obj) {
         em.getTransaction().begin();
         try{
@@ -47,8 +57,5 @@ public abstract class AbstractDAO<T> {
         }
         em.getTransaction().commit();
     }
-    
-    
-    
-    
+ 
 }

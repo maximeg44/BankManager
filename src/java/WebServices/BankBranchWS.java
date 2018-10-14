@@ -12,12 +12,17 @@ import javax.jws.WebParam;
 import models.BankBranch;
 
 /**
- *
+ * Web Services qui sont liés à une agence bancaire.
  * @author yoelb
  */
 @WebService(serviceName = "BankBranchWS")
 public class BankBranchWS {
 
+    /**
+     * Web Method permettant de créer une nouvelle branche.
+     * @param adresse adresse postale de la branche
+     * @return l'objet crée.
+     */
     @WebMethod(operationName = "createBankBranch")
     public String createBankBranch(@WebParam(name = "adresse") String adresse) {
         BankBranch branch = new BankBranch();

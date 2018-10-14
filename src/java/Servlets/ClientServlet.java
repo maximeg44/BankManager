@@ -8,11 +8,9 @@ package Servlets;
 import DAO.AccountDAO;
 import DAO.ClientDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Date;
 import java.util.List;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,7 +18,7 @@ import models.Client;
 import models.Compte;
 
 /**
- *
+ * La Servlet liée à l'objet Client.
  * @author MGU
  */
 public class ClientServlet extends HttpServlet {
@@ -89,8 +87,6 @@ public class ClientServlet extends HttpServlet {
         return clientDAO.findAll();
     }
        
-    
-    
     public void removeClient(Client client){
         try{
             List<Compte> comptes = client.getMescomptes();

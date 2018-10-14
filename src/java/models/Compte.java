@@ -19,7 +19,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 /**
- *
+ * Classe Compte qui définit les éléments qui caractérisent l'objet en spécifiant 
+ * les relations avec les autres objets.
  * @author MGU
  */
 @Entity
