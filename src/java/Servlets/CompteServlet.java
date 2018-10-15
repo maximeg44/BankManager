@@ -9,6 +9,7 @@ import DAO.AccountDAO;
 import DAO.ClientDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -24,11 +25,13 @@ import models.Client;
  */
 public class CompteServlet extends HttpServlet {
     private final AccountDAO accountDAO = AccountDAO.getInstance();
+    private final ClientDAO clientDAO = ClientDAO.getInstance();
     
     public static final String VUE = "WEB-INF/formulaireCompte.jsp";
     public static final String LIBELLE = "libelle";
     public static final String IBAN = "iban";
     public static final String SOLDE = "solde";
+    public static final String CLIENT = "client";
     
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -37,11 +40,15 @@ public class CompteServlet extends HttpServlet {
         String libelle = request.getParameter(LIBELLE);
         String iban = request.getParameter(IBAN);
         String solde = request.getParameter(SOLDE);
+        String clientIdToAttach = request.getParameter(CLIENT);
         
         String[] infosCompte = {libelle, iban, solde};
+        
+        Client clientToAttach = clientDAO.find(clientIdToAttach);
        
         try {
-            createAccount(infosCompte);
+            Compte compteCree = createAccount(infosCompte);
+            addClientToAccount(clientToAttach, compteCree.getAccount_id());
             List<Compte> listComptes = (List<Compte>) accountDAO.findAll();     
             request.setAttribute("listComptes", listComptes);
             request.getRequestDispatcher("/listeComptes.jsp").forward(request, response);
@@ -57,6 +64,12 @@ public class CompteServlet extends HttpServlet {
         String action = request.getParameter("action");
         
         switch(action) {
+            case "create":
+                List<Client> listClients = (List<Client>) clientDAO.findAll();     
+                request.setAttribute("listClients", listClients);
+                request.getRequestDispatcher("/formulaireCompte.jsp").forward(request, response);
+                break;
+                
             case "list":
                 List<Compte> listComptes = (List<Compte>) accountDAO.findAll();     
                 request.setAttribute("listComptes", listComptes);

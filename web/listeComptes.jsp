@@ -4,6 +4,7 @@
     Author     : yoelb
 --%>
 
+<%@page import="models.Client"%>
 <%@page import="models.Compte"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -61,7 +62,7 @@
                     <h3 class="panel-title">Liste des Comptes</h3>
                   </div>
                   <div class="col col-xs-6 text-right">
-                      <a href="./formulaireCompte.jsp" class="btn btn-sm btn-primary btn-create">
+                      <a href="./compteServlet?action=create" class="btn btn-sm btn-primary btn-create">
                           <span class="fas fa-piggy-bank"></span> Nouveau Compte 
                       </a>
                   </div>
@@ -84,6 +85,7 @@
                         <th>Iban</th>
                         <th>Libelle</th>
                         <th>Solde</th>
+                        <th>Client lié</th>
                     </tr> 
                   </thead>
                   <tbody>
@@ -98,6 +100,21 @@
                             <td><%=compte.getIban()%></td>
                             <td><%=compte.getLibelle()%></td>
                             <td><%=compte.getSolde()%></td>
+                            
+                            <td>   
+                                <select tyle="border-radius: 5px;">
+                                    <%
+                                    for (Client client : compte.getMesClients()) {
+                                        String ClientNom = client.getNom();
+                                        String ClientPrenom = client.getPrenom();
+                                    %>
+        
+                                        <option><%=ClientNom%> - <%=ClientPrenom%></option>
+                                    <%
+                                    }
+                                    %>
+                                </select>
+                            </td>
                           </tr>
                           <% } %>
                   </tbody>

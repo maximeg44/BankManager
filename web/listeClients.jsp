@@ -4,6 +4,7 @@
     Author     : yoelb
 --%>
 
+<%@page import="models.Compte"%>
 <%@page import="models.Client"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

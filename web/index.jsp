@@ -37,7 +37,7 @@
       <div class="jumbotron">
         <div class="row">
             <div class="col text-center"><a href="./formulaireClient.jsp" class="btn btn-success"><span class="fa fa-users"></span> Nouveau Client </a></div>
-            <div class="col text-center"><a href="./formulaireCompte.jsp" class="btn btn-success"><span class="fas fa-piggy-bank"></span> Nouveau Compte </a></div>
+            <div class="col text-center"><a href="./compteServlet?action=create" class="btn btn-success"><span class="fas fa-piggy-bank"></span> Nouveau Compte </a></div>
             <div class="col text-center"><a href="./formulaireBranche.jsp" class="btn btn-success"><span class="fas fa-university"></span> Nouvelle Agence Bancaire </a></div>
         </div>
       </div>

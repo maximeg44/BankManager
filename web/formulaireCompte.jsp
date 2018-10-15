@@ -4,6 +4,8 @@
     Author     : yoelb
 --%>
 
+<%@page import="models.Client"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -74,6 +76,27 @@
   <div class="col-md-4">
   <input id="solde" name="solde" type="text" placeholder="Solde Initial" class="form-control input-md" required="">
     
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-4 control-label" for="Client">Client à lier au compte</label>
+  <div class="col-md-4">
+      <select name="client" style="border-radius: 5px;" required="">
+        <%
+            List<Client> listClients = (List<Client>) request.getAttribute("listClients");
+            for (Client client : listClients) {
+                String ClientId = client.getId_client();
+                String ClientNom = client.getNom();
+                String ClientPrenom = client.getPrenom();
+        %>
+        
+            <option value="<%=ClientId%>"><%=ClientNom%> - <%=ClientPrenom%></option>
+        <%
+        }
+        %>
+
+      </select>
   </div>
 </div>
 
