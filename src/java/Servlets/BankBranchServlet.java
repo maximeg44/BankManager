@@ -8,6 +8,7 @@ package Servlets;
 import DAO.AccountDAO;
 import DAO.BankBranchDAO;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -36,9 +37,44 @@ public class BankBranchServlet extends HttpServlet {
                 
         try {
             createBranch(adresse);
+            List<BankBranch> listBranches = (List<BankBranch>) bankBranchDAO.findAll();     
+            request.setAttribute("listBranches", listBranches);
+            request.getRequestDispatcher("/listeBranches.jsp").forward(request, response);
         } catch(Exception e) {
             e.printStackTrace();
         }
+    }
+    
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        String action = request.getParameter("action");
+        
+        switch(action) {
+            case "list":
+                List<BankBranch> listBranches = (List<BankBranch>) bankBranchDAO.findAll();     
+                request.setAttribute("listBranches", listBranches);
+                request.getRequestDispatcher("/listeBranches.jsp").forward(request, response);
+                break;
+                
+            case "delete":
+                String brancheId = request.getParameter("id");
+                BankBranch brancheToDelete = bankBranchDAO.find(brancheId);
+                removeBranch(brancheToDelete);
+                
+                List<BankBranch> newListBranches = (List<BankBranch>) bankBranchDAO.findAll();     
+                request.setAttribute("listBranches", newListBranches);
+                request.getRequestDispatcher("/listeBranches.jsp").forward(request, response);
+                break;
+                
+            default:
+                try(PrintWriter out = response.getWriter()){
+                    out.print("action inconnue...");   
+                }catch(Exception e){}
+                break;
+        }
+
     }
     
     

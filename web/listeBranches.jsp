@@ -1,10 +1,10 @@
 <%-- 
-    Document   : listeClients
+    Document   : listeBranches
     Created on : 11 oct. 2018, 12:54:51
     Author     : yoelb
 --%>
 
-<%@page import="models.Client"%>
+<%@page import="models.BankBranch"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
@@ -31,13 +31,13 @@
                 <a class="nav-link" href="./index.jsp">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" href="#">Liste Clients<span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="./clientServlet?action=list">Liste Clients</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="./compteServlet?action=list">Liste Comptes</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="./bankBranchServlet?action=list">Liste Branches</a>
+                <a class="nav-link active" href="#">Liste Branches<span class="sr-only">(current)</span></a>
             </li>
           </ul>
         </nav>
@@ -58,11 +58,11 @@
               <div class="panel-heading">
                 <div class="row">
                   <div class="col col-xs-6">
-                    <h3 class="panel-title">Liste des Clients</h3>
+                    <h3 class="panel-title">Liste des Branches</h3>
                   </div>
                   <div class="col col-xs-6 text-right">
-                      <a href="./formulaireClient.jsp" class="btn btn-sm btn-primary btn-create">
-                          <span class="fa fa-users"></span> Nouveau Client 
+                      <a href="./formulaireBranche.jsp" class="btn btn-sm btn-primary btn-create">
+                          <span class="fas fa-university"></span> Nouvelle Branche 
                       </a>
                   </div>
                 </div>
@@ -71,8 +71,8 @@
             <div class="panel-body">
               
             <%
-            if(request.getAttribute("listClients") != null) {
-                List<Client> listClients = (List<Client>) request.getAttribute("listClients"); 
+            if(request.getAttribute("listBranches") != null) {
+                List<BankBranch> listBranches = (List<BankBranch>) request.getAttribute("listBranches"); 
             %>
                 
                 
@@ -81,23 +81,19 @@
                     <tr>
                         <th><em class="fa fa-cog"></em></th>
                         <th class="hidden-xs">ID</th>
-                        <th>Nom</th>
-                        <th>Prenom</th>
-                        <th>Date de Naissance</th>
+                        <th>Adresse</th>
                     </tr> 
                   </thead>
                   <tbody>
                       <%
-                for (Client client: listClients) {
+                for (BankBranch branche : listBranches) {
                 %>
                           <tr>
                             <td align="center">
-                              <a class="btn btn-danger" href="./clientServlet?action=delete&id=<%=client.getId_client()%>"><em class="fa fa-trash"></em></a>
+                              <a class="btn btn-danger" href="./bankBranchServlet?action=delete&id=<%=branche.getCodeAgence()%>"><em class="fa fa-trash"></em></a>
                             </td>
-                            <td class="hidden-xs"><%=client.getId_client()%></td>
-                            <td><%=client.getNom()%></td>
-                            <td><%=client.getPrenom()%></td>
-                            <td><%=client.getNaissance()%></td>
+                            <td class="hidden-xs"><%=branche.getCodeAgence()%></td>
+                            <td><%=branche.getAdresse()%></td>
                           </tr>
                           <% } %>
                   </tbody>

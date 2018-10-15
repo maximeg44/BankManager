@@ -22,16 +22,16 @@ public class BankBranch implements Serializable{
     @Id
     @GeneratedValue
     @Column(length = 5, nullable = false, unique = true)
-    private int codeAgence;
+    private String codeAgence;
 
     private String adresse;
     
 
-    public int getCodeAgence() {
+    public String getCodeAgence() {
         return codeAgence;
     }
 
-    public void setCodeAgence(int codeAgence) {
+    public void setCodeAgence(String codeAgence) {
         this.codeAgence = codeAgence;
     }
 
