@@ -31,7 +31,7 @@
                 <a class="nav-link" href="./index.jsp">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="./clientServlet">Liste Clients</a>
+                <a class="nav-link" href="./clientServlet?action=list">Liste Clients</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link active" href="#">Liste Comptes<span class="sr-only">(current)</span></a>
@@ -89,8 +89,7 @@
                 %>
                           <tr>
                             <td align="center">
-                              <a class="btn btn-warning"><em class="fas fa-edit"></em></a>
-                              <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
+                              <a class="btn btn-danger" href="./compteServlet?action=delete&id=<%=compte.getAccount_id()%>"><em class="fa fa-trash"></em></a>
                             </td>
                             <td class="hidden-xs"><%=compte.getAccount_id()%></td>
                             <td><%=compte.getIban()%></td>

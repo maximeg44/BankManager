@@ -8,6 +8,7 @@ package Servlets;
 import DAO.AccountDAO;
 import DAO.ClientDAO;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -38,11 +39,12 @@ public class CompteServlet extends HttpServlet {
         String solde = request.getParameter(SOLDE);
         
         String[] infosCompte = {libelle, iban, solde};
-        System.out.println(infosCompte);
        
         try {
-            
             createAccount(infosCompte);
+            List<Compte> listComptes = (List<Compte>) accountDAO.findAll();     
+            request.setAttribute("listComptes", listComptes);
+            request.getRequestDispatcher("/listeComptes.jsp").forward(request, response);
         } catch(Exception e) {
             e.printStackTrace();
         }
@@ -52,10 +54,32 @@ public class CompteServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        List<Compte> listComptes = (List<Compte>) accountDAO.findAll();     
-        request.setAttribute("listComptes", listComptes);
-        request.getRequestDispatcher("/listeComptes.jsp").forward(request, response);
-
+        String action = request.getParameter("action");
+        
+        switch(action) {
+            case "list":
+                List<Compte> listComptes = (List<Compte>) accountDAO.findAll();     
+                request.setAttribute("listComptes", listComptes);
+                request.getRequestDispatcher("/listeComptes.jsp").forward(request, response);
+                break;
+                
+            case "delete":
+                String compteId = request.getParameter("id");
+                Compte compteToDelete = accountDAO.find(compteId);
+                removeAccount(compteToDelete);
+                
+                List<Compte> newListComptes = (List<Compte>) accountDAO.findAll();     
+                request.setAttribute("listComptes", newListComptes);
+                request.getRequestDispatcher("/listeComptes.jsp").forward(request, response);
+                break;
+                
+            default:
+                try(PrintWriter out = response.getWriter()){
+                    out.print("action inconnue...");   
+                }catch(Exception e){}
+                break;
+        }
+        
     }
     
     

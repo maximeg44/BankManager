@@ -20,10 +20,10 @@
               <a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="./clientServlet">Liste Clients</a>
+                <a class="nav-link" href="./clientServlet?action=list">Liste Clients</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="./compteServlet">Liste Comptes</a>
+                <a class="nav-link" href="./compteServlet?action=list">Liste Comptes</a>
             </li>
           </ul>
         </nav>

@@ -34,7 +34,7 @@
                 <a class="nav-link active" href="#">Liste Clients<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="./compteServlet">Liste Comptes</a>
+                <a class="nav-link" href="./compteServlet?action=list">Liste Comptes</a>
             </li>
           </ul>
         </nav>
@@ -89,8 +89,7 @@
                 %>
                           <tr>
                             <td align="center">
-                              <a class="btn btn-warning"><em class="fas fa-edit"></em></a>
-                              <a class="btn btn-danger"><em class="fa fa-trash"></em></a>
+                              <a class="btn btn-danger" href="./clientServlet?action=delete&id=<%=client.getId_client()%>"><em class="fa fa-trash"></em></a>
                             </td>
                             <td class="hidden-xs"><%=client.getId_client()%></td>
                             <td><%=client.getNom()%></td>

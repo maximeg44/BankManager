@@ -8,6 +8,7 @@ package Servlets;
 import DAO.AccountDAO;
 import DAO.ClientDAO;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Date;
 import java.util.List;
 import javax.servlet.ServletException;
@@ -43,6 +44,9 @@ public class ClientServlet extends HttpServlet {
         
         try {
             createClient(infosClient);
+            List<Client> listClients = (List<Client>) clientDAO.findAll();     
+            request.setAttribute("listClients", listClients);
+            request.getRequestDispatcher("/listeClients.jsp").forward(request, response);
         } catch(Exception e) {
             e.printStackTrace();
         }
@@ -53,9 +57,31 @@ public class ClientServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        List<Client> listClients = (List<Client>) clientDAO.findAll();     
-        request.setAttribute("listClients", listClients);
-        request.getRequestDispatcher("/listeClients.jsp").forward(request, response);
+        String action = request.getParameter("action");
+        
+        switch(action) {
+            case "list":
+                List<Client> listClients = (List<Client>) clientDAO.findAll();     
+                request.setAttribute("listClients", listClients);
+                request.getRequestDispatcher("/listeClients.jsp").forward(request, response);
+                break;
+                
+            case "delete":
+                String clientId = request.getParameter("id");
+                Client clientToDelete = clientDAO.find(clientId);
+                removeClient(clientToDelete);
+                
+                List<Client> newListClients = (List<Client>) clientDAO.findAll();     
+                request.setAttribute("listClients", newListClients);
+                request.getRequestDispatcher("/listeClients.jsp").forward(request, response);
+                break;
+                
+            default:
+                try(PrintWriter out = response.getWriter()){
+                    out.print("action inconnue...");   
+                }catch(Exception e){}
+                break;
+        }
 
     }
     

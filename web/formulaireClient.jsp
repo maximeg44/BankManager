@@ -28,10 +28,10 @@
                 <a class="nav-link" href="./index.html">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="./listeClients.jsp">Liste Clients</a>
+                <a class="nav-link" href="./clientServlet?action=list">Liste Clients</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="./listeComptes.jsp">Liste Comptes</a>
+                <a class="nav-link" href="./compteServlet?action=list">Liste Comptes</a>
             </li>
           </ul>
         </nav>
