@@ -53,7 +53,9 @@ public class BankBranchServlet extends HttpServlet {
         
         switch(action) {
             case "list":
-                List<BankBranch> listBranches = (List<BankBranch>) bankBranchDAO.findAll();     
+                List<BankBranch> listBranches = (List<BankBranch>) bankBranchDAO.findAll();
+                // Je pense à changer par la ligne en dessous :
+                //List<BankBranch> listBranches = findAllBankBranh();
                 request.setAttribute("listBranches", listBranches);
                 request.getRequestDispatcher("/listeBranches.jsp").forward(request, response);
                 break;
@@ -63,7 +65,9 @@ public class BankBranchServlet extends HttpServlet {
                 BankBranch brancheToDelete = bankBranchDAO.find(brancheId);
                 removeBranch(brancheToDelete);
                 
-                List<BankBranch> newListBranches = (List<BankBranch>) bankBranchDAO.findAll();     
+                List<BankBranch> newListBranches = (List<BankBranch>) bankBranchDAO.findAll();
+                // Je pense à changer par la ligne en dessous :
+                //List<BankBranch> listBranches = findAllBankBranh();
                 request.setAttribute("listBranches", newListBranches);
                 request.getRequestDispatcher("/listeBranches.jsp").forward(request, response);
                 break;
@@ -118,7 +122,7 @@ public class BankBranchServlet extends HttpServlet {
     * @return : List<BankBranch>
     * Méthode permettant de retouner la liste de tous les BankBranch
     */
-    public List<BankBranch> findAllClients(){
+    public List<BankBranch> findAllBankBranh(){
         return bankBranchDAO.findAll();
     }
     
