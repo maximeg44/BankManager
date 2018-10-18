@@ -48,7 +48,7 @@ public class CompteServlet extends HttpServlet {
         String[] infosCompte = {libelle, iban, solde, branchIdToAttach};
         
         Client clientToAttach = clientDAO.find(clientIdToAttach);
-       
+        
         try {
             Compte compteCree = createAccount(infosCompte);
             addClientToAccount(clientToAttach, compteCree.getAccount_id());

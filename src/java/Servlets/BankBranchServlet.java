@@ -62,7 +62,7 @@ public class BankBranchServlet extends HttpServlet {
                 String brancheId = request.getParameter("id");
                 BankBranch brancheToDelete = findById(brancheId);
                 removeBranch(brancheToDelete);
-                
+
                 List<BankBranch> newListBranches = findAllBranches();     
                 request.setAttribute("listBranches", newListBranches);
                 request.getRequestDispatcher("/listeBranches.jsp").forward(request, response);
@@ -122,6 +122,16 @@ public class BankBranchServlet extends HttpServlet {
      * Permet de supprimer une branche passée en paramètre.
      * @param branch 
      */
+    public List<BankBranch> findAllBankBranh(){
+        return bankBranchDAO.findAll();
+    }
+    
+    /**
+    * @param : BankBranch
+    * Méthode permettant de supprimer une BankBranch
+    * la méthode supprime également le lien dans les Comptes appartenant à la 
+    * BankBranch supprimé
+    */
     public void removeBranch(BankBranch branch){
         CompteServlet accountControler = new CompteServlet();
         try{
