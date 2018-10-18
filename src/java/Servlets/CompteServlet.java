@@ -45,11 +45,13 @@ public class CompteServlet extends HttpServlet {
         String[] infosCompte = {libelle, iban, solde};
         
         Client clientToAttach = clientDAO.find(clientIdToAttach);
-       
+        
         try {
             Compte compteCree = createAccount(infosCompte);
             addClientToAccount(clientToAttach, compteCree.getAccount_id());
-            List<Compte> listComptes = (List<Compte>) accountDAO.findAll();     
+            List<Compte> listComptes = (List<Compte>) accountDAO.findAll();
+            //Je pense à changer par la ligne en dessous :
+            // List<Compte> listComptes = findAllAccounts();
             request.setAttribute("listComptes", listComptes);
             request.getRequestDispatcher("/listeComptes.jsp").forward(request, response);
         } catch(Exception e) {
@@ -65,13 +67,15 @@ public class CompteServlet extends HttpServlet {
         
         switch(action) {
             case "create":
-                List<Client> listClients = (List<Client>) clientDAO.findAll();     
+                List<Client> listClients = (List<Client>) clientDAO.findAll();
                 request.setAttribute("listClients", listClients);
                 request.getRequestDispatcher("/formulaireCompte.jsp").forward(request, response);
                 break;
                 
             case "list":
-                List<Compte> listComptes = (List<Compte>) accountDAO.findAll();     
+                List<Compte> listComptes = (List<Compte>) accountDAO.findAll();
+                //Je pense à changer par la ligne en dessous :
+                // List<Compte> listComptes = findAllAccounts();
                 request.setAttribute("listComptes", listComptes);
                 request.getRequestDispatcher("/listeComptes.jsp").forward(request, response);
                 break;
@@ -79,9 +83,13 @@ public class CompteServlet extends HttpServlet {
             case "delete":
                 String compteId = request.getParameter("id");
                 Compte compteToDelete = accountDAO.find(compteId);
+                //Je pense à changer par la ligne en dessous :
+                // Compte compteToDelete = accountDAO.findById(compteId);
                 removeAccount(compteToDelete);
                 
-                List<Compte> newListComptes = (List<Compte>) accountDAO.findAll();     
+                List<Compte> newListComptes = (List<Compte>) accountDAO.findAll();
+                //Je pense à changer par la ligne en dessous :
+                // List<Compte> listComptes = findAllAccounts();
                 request.setAttribute("listComptes", newListComptes);
                 request.getRequestDispatcher("/listeComptes.jsp").forward(request, response);
                 break;
@@ -95,7 +103,12 @@ public class CompteServlet extends HttpServlet {
         
     }
     
-    
+    /**
+    * @param : String[]
+    * @return : Compte
+    * Méthode permettant de créer un compte
+    * retourne le compte (ID inclus)
+    */
     public Compte createAccount(String[] infoAccount){
         Compte account = new Compte();
         account.setIban(infoAccount[0]);
@@ -105,6 +118,12 @@ public class CompteServlet extends HttpServlet {
         return account;        
     }
     
+    /**
+    * @param : String[]
+    * @param : String
+    * Permet de mettre à jour un compte
+    * retourne le compte modifié
+    */
     public Compte updateAccount(String[] infoAccount, String idAccount){
         Compte account = findById(idAccount);
         account.setIban(infoAccount[0]);
@@ -115,28 +134,58 @@ public class CompteServlet extends HttpServlet {
         return account;        
     }
     
+    /**
+    * @param : Compte
+    * Permet de mettre à jour un compte
+    * retourne le compte modifié
+    */
     public Compte updateAccount(Compte account){
        accountDAO.update(account);
        return account;
        
     }
     
+    /**
+    * @param : String
+    * @return : Compte
+    * Permet de rechercher un Compte dans la DB
+    * retourne le compte associé à l'ID
+    */
     public Compte findById(String id){
         return accountDAO.find(id);
     }
     
+    /**
+    * @return : List<Compte>
+    * Méthode permettant de retourner l'ensemble des comptes de la DB
+    */
     public List<Compte> findAllAccounts(){
         return accountDAO.findAll();
     }
-           
+    
+    /**
+    * @param : Compte
+    * Permet de supprimer un compte passé en paramètre
+    */
     public void removeAccount(Compte account){
         accountDAO.delete(account);
     }
     
+    /**
+    * @param : BankBranch
+    * @return : List<Compte>
+    * Permet de récupérer tout les Compte qui sont associés à la BankBranch passé en paramètre
+    * retourne une List de Compte
+    */
     public List<Compte> findAllByBranchId(BankBranch branch){
         return accountDAO.findAllByBranchId(branch);
     }
     
+    /**
+    * @param : Client
+    * @param : String
+    * Permet d'ajouter un Client à un Compte
+    */
     public void addClientToAccount(Client client, String accountId){
         Compte account =  findById(accountId);
         account.getMesClients().add(client);
