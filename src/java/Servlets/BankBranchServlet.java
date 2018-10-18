@@ -77,7 +77,12 @@ public class BankBranchServlet extends HttpServlet {
 
     }
     
-    
+    /**
+    * @param : String infoBranch
+    * @return : BankBranch
+    * Méthode permettant de créer une BankBranch avec une adresse passé en paramètre
+    * retourne une BankBranch (inclus l'ID db...)
+    */
     public BankBranch createBranch(String infoBranch){
         BankBranch branch = new BankBranch();
         branch.setAdresse(infoBranch);      
@@ -85,6 +90,13 @@ public class BankBranchServlet extends HttpServlet {
         return branch;        
     }
     
+    /**
+    * @param : String infoBranch
+    * @param : String idBranch
+    * @return : BankBranch
+    * Méthode permettant d'update une BankBranch avec un id et la nouvelle adresse
+    * retourne la BankBranch modifié
+    */
     public BankBranch updateBranch(String infoBranch, String idBranch){
         BankBranch branch = findById(idBranch);
         branch.setAdresse(infoBranch); 
@@ -93,14 +105,29 @@ public class BankBranchServlet extends HttpServlet {
         return branch;        
     }
     
+    /**
+    * @param : String
+    * @return : BankBranch
+    * Méthode permettant de retourner une BankBranch en fonction d'un ID passé en paramètre
+    */
     public BankBranch findById(String id){
         return bankBranchDAO.find(id);
     }
     
+    /**
+    * @return : List<BankBranch>
+    * Méthode permettant de retouner la liste de tous les BankBranch
+    */
     public List<BankBranch> findAllClients(){
         return bankBranchDAO.findAll();
     }
-           
+    
+    /**
+    * @param : BankBranch
+    * Méthode permettant de supprimer une BankBranch
+    * la méthode supprime également le lien dans les Comptes appartenant à la 
+    * BankBranch supprimé
+    */
     public void removeBranch(BankBranch branch){
         CompteServlet accountControler = new CompteServlet();
         try{
