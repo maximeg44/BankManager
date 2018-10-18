@@ -86,6 +86,7 @@
                         <th>Libelle</th>
                         <th>Solde</th>
                         <th>Client lié</th>
+                        <th>Branche liée</th>
                     </tr> 
                   </thead>
                   <tbody>
@@ -115,6 +116,7 @@
                                     %>
                                 </select>
                             </td>
+                            <td><%=compte.getBankbranch().getCodeAgence()%> - <%=compte.getBankbranch().getAdresse()%></td>
                           </tr>
                           <% } %>
                   </tbody>

@@ -4,6 +4,7 @@
     Author     : yoelb
 --%>
 
+<%@page import="models.BankBranch"%>
 <%@page import="models.Client"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -57,7 +58,6 @@
   <label class="col-md-4 control-label" for="Libelle">Libelle</label>  
   <div class="col-md-4">
   <input id="libelle" name="libelle" type="text" placeholder="Libelle" class="form-control input-md" required="">
-    
   </div>
 </div>
 
@@ -66,7 +66,6 @@
   <label class="col-md-4 control-label" for="Iban">Iban</label>  
   <div class="col-md-4">
   <input id="iban" name="iban" type="text" placeholder="Iban" class="form-control input-md" required="">
-    
   </div>
 </div>
 
@@ -74,8 +73,7 @@
 <div class="form-group">
   <label class="col-md-4 control-label" for="Solde">Solde</label>  
   <div class="col-md-4">
-  <input id="solde" name="solde" type="text" placeholder="Solde Initial" class="form-control input-md" required="">
-    
+  <input id="solde" name="solde" type="text" placeholder="Solde Initial" class="form-control input-md" required=""> 
   </div>
 </div>
 
@@ -92,6 +90,26 @@
         %>
         
             <option value="<%=ClientId%>"><%=ClientNom%> - <%=ClientPrenom%></option>
+        <%
+        }
+        %>
+
+      </select>
+  </div>
+</div>
+        
+  <div class="form-group">
+  <label class="col-md-4 control-label" for="Branche">Branche à lier au compte</label>
+  <div class="col-md-4">
+      <select name="branche" style="border-radius: 5px;" required="">
+        <%
+            List<BankBranch> listBranches = (List<BankBranch>) request.getAttribute("listBranches");
+            for (BankBranch branche : listBranches) {
+                String codeAgence = branche.getCodeAgence();
+                String adresse = branche.getAdresse();
+        %>
+        
+            <option value="<%=codeAgence%>"><%=codeAgence%> - <%=adresse%></option>
         <%
         }
         %>

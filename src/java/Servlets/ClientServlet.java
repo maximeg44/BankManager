@@ -44,7 +44,7 @@ public class ClientServlet extends HttpServlet {
         
         try {
             createClient(infosClient);
-            List<Client> listClients = (List<Client>) clientDAO.findAll();     
+            List<Client> listClients = findAllClients();     
             request.setAttribute("listClients", listClients);
             request.getRequestDispatcher("/listeClients.jsp").forward(request, response);
         } catch(Exception e) {
@@ -61,17 +61,17 @@ public class ClientServlet extends HttpServlet {
         
         switch(action) {
             case "list":
-                List<Client> listClients = (List<Client>) clientDAO.findAll();     
+                List<Client> listClients = findAllClients();     
                 request.setAttribute("listClients", listClients);
                 request.getRequestDispatcher("/listeClients.jsp").forward(request, response);
                 break;
                 
             case "delete":
                 String clientId = request.getParameter("id");
-                Client clientToDelete = clientDAO.find(clientId);
+                Client clientToDelete = findById(clientId);
                 removeClient(clientToDelete);
                 
-                List<Client> newListClients = (List<Client>) clientDAO.findAll();     
+                List<Client> newListClients = findAllClients();
                 request.setAttribute("listClients", newListClients);
                 request.getRequestDispatcher("/listeClients.jsp").forward(request, response);
                 break;
@@ -82,10 +82,13 @@ public class ClientServlet extends HttpServlet {
                 }catch(Exception e){}
                 break;
         }
-
     }
     
-    
+    /**
+     * Méthode permettant de créer un client.
+     * @param infoClient
+     * @return le client (ID inclus)
+     */
     public Client createClient(String[] infoClient){
         Client client = new Client();
         client.setNom(infoClient[0]);
@@ -95,6 +98,12 @@ public class ClientServlet extends HttpServlet {
         return client;        
     }
     
+    /**
+     * Permet de mettre à jour un compte.
+     * @param infoClient
+     * @param idClient
+     * @return le compte modifié
+     */
     public Client updateClient(String[] infoClient, String idClient){
         Client client = findById(idClient);
         client.setNom(infoClient[0]);
@@ -105,14 +114,27 @@ public class ClientServlet extends HttpServlet {
         return client;        
     }
     
+    /**
+     * Permet de rechercher un Client dans la DB.
+     * @param id
+     * @return le client associé à l'ID
+     */
     public Client findById(String id){
         return clientDAO.find(id);
     }
     
+    /**
+     * Méthode permettant de retourner l'ensemble des clients de la DB.
+     * @return l'ensemble des clients de la DB
+     */
     public List<Client> findAllClients(){
         return clientDAO.findAll();
     }
        
+    /**
+     * Permet de supprimer un client passé en paramètre.
+     * @param client 
+     */
     public void removeClient(Client client){
         try{
             List<Compte> comptes = client.getMescomptes();

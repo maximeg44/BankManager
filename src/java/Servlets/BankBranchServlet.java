@@ -37,7 +37,7 @@ public class BankBranchServlet extends HttpServlet {
                 
         try {
             createBranch(adresse);
-            List<BankBranch> listBranches = (List<BankBranch>) bankBranchDAO.findAll();     
+            List<BankBranch> listBranches = findAllBranches();     
             request.setAttribute("listBranches", listBranches);
             request.getRequestDispatcher("/listeBranches.jsp").forward(request, response);
         } catch(Exception e) {
@@ -53,17 +53,17 @@ public class BankBranchServlet extends HttpServlet {
         
         switch(action) {
             case "list":
-                List<BankBranch> listBranches = (List<BankBranch>) bankBranchDAO.findAll();     
+                List<BankBranch> listBranches = findAllBranches();     
                 request.setAttribute("listBranches", listBranches);
                 request.getRequestDispatcher("/listeBranches.jsp").forward(request, response);
                 break;
                 
             case "delete":
                 String brancheId = request.getParameter("id");
-                BankBranch brancheToDelete = bankBranchDAO.find(brancheId);
+                BankBranch brancheToDelete = findById(brancheId);
                 removeBranch(brancheToDelete);
                 
-                List<BankBranch> newListBranches = (List<BankBranch>) bankBranchDAO.findAll();     
+                List<BankBranch> newListBranches = findAllBranches();     
                 request.setAttribute("listBranches", newListBranches);
                 request.getRequestDispatcher("/listeBranches.jsp").forward(request, response);
                 break;
@@ -74,10 +74,13 @@ public class BankBranchServlet extends HttpServlet {
                 }catch(Exception e){}
                 break;
         }
-
     }
     
-    
+    /**
+     * Méthode permettant de créer une branche.
+     * @param infoBranch
+     * @return la branche (ID inclus)
+     */
     public BankBranch createBranch(String infoBranch){
         BankBranch branch = new BankBranch();
         branch.setAdresse(infoBranch);      
@@ -85,22 +88,40 @@ public class BankBranchServlet extends HttpServlet {
         return branch;        
     }
     
+    /**
+     * Permet de mettre à jour une branche.
+     * @param infoBranch
+     * @param idBranch
+     * @return la branhe modifiée
+     */
     public BankBranch updateBranch(String infoBranch, String idBranch){
         BankBranch branch = findById(idBranch);
         branch.setAdresse(infoBranch); 
         bankBranchDAO.update(branch);
-        
         return branch;        
     }
     
+    /**
+     * Permet de rechercher une Branche dans la DB.
+     * @param id
+     * @return la branche associée à l'ID
+     */
     public BankBranch findById(String id){
         return bankBranchDAO.find(id);
     }
     
-    public List<BankBranch> findAllClients(){
+    /**
+     * Méthode permettant de retourner l'ensemble des branches de la DB.
+     * @return l'ensemble des branches de la DB
+     */
+    public List<BankBranch> findAllBranches(){
         return bankBranchDAO.findAll();
     }
-           
+          
+    /**
+     * Permet de supprimer une branche passée en paramètre.
+     * @param branch 
+     */
     public void removeBranch(BankBranch branch){
         CompteServlet accountControler = new CompteServlet();
         try{

@@ -89,7 +89,7 @@ public class Compte implements Serializable {
         this.solde = solde;
     }
     
-        public BankBranch getBankbranch() {
+    public BankBranch getBankbranch() {
         return bankbranch;
     }
 
